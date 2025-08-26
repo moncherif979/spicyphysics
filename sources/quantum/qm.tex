@@ -10,56 +10,52 @@
 \usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{dsfont}
 \usepackage[]{tipa}
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{~/Dropbox/appunti/bibliografia/bib.bib}
 %
-\renewcommand{\vec}[1]{\underline{#1}}
-\renewcommand{\trace}{\mathrm{Tr}}
-\newcommand{\1}{\opr{\mathds{1}}}
-\newcommand{\lbar}{\mbox{\textipa\textcrlambda}}
-\renewcommand{\unit}[1]{\ \mathrm{#1}}
-\newcommand{\diff}[2][]{\ \mathrm{d}^{#1}#2}
-\newcommand{\ddiff}[3][]{\ \mathrm{d}^{#1}#2\mathrm{d}^{#1}#3}
-\newcommand{\dddiff}[4][]{\ \mathrm{d}^{#1}#2\mathrm{d}^{#1}#3\mathrm{d}^{#1}#4}
-\newcommand{\ham}{\mathcal{H}}
-\newcommand{\opr}[1]{\hat{#1}}
-\newcommand{\tposed}[1]{#1^{\text{T}}}
-\newcommand{\pcomm}[2]{\comm{#1}{#2}_{PB}}
-\newcommand{\Ut}{\opr{\mathcal{U}}}
-\newcommand{\pot}{\mathcal{U}}
-\newcommand{\lc}[1]{\epsilon_{#1}}
-\newcommand{\kd}[1]{\delta_{#1}}
-\newcommand{\kdopr}[1]{\opr{\delta}_{#1}}
-\newcommand{\mc}[1]{\mathcal{#1}}
-\newcommand{\ladopru}[1]{\opr{#1}_{+}}
-\newcommand{\ladoprd}[1]{\opr{#1}_{-}}
-\newcommand{\ladoprpm}[1]{\opr{#1}_{\pm}}
-\newcommand{\vecopr}[1]{\opr{\vec{#1}}}
-\newcommand{\up}{\uparrow}
-\newcommand{\down}{\downarrow}
-\newcommand{\hilbert}{\mathbb{H}}
-\newcommand{\sph}{Y^{m_l}_l(\theta,\phi)}
-\newcommand{\tsph}{\mc{Y}^{ls}_{jm}(\theta,\phi)}
-\newcommand{\oham}{\opr{\mathcal{H}}}
-\newcommand{\sla}[1]{\slashed{#1}}
-\newcommand{\term}[3][]{^{#3}#2_{#1}}
-\renewcommand{\F}{\hat{\mathcal{F}}}
-\newcommand{\act}{\mathcal{S}}
-\newcommand{\lag}{\mathcal{L}}
-\newcommand{\dopr}{\hat{\rho}}
-\newcommand{\qsum}{\sideset{}{'}\sum}
-\newcommand{\nuc}[4][]{ {}_{#4}^{#3}{\mathrm{#2}}_{#1} } %\nuc[N]{M}{A}{Z}
-\DeclarePairedDelimiter\rounding{\lceil}{\rfloor}
-%
-\newtheorem{pos}{Postulate}
-\newtheorem{defn}{Definition}[section]
-\newtheorem{law}{Law}
-%
-%
-%\newtheorem{thm}{Theorem}
-%\theoremstyle{plain}
-%\newtheorem{cor}{Corollary}
-%\newtheorem{hyp}{Hypothesis}
+%\renewcommand{\vec}[1]{\underline{#1}}
+%\renewcommand{\trace}{\mathrm{Tr}}
+%\newcommand{\1}{\opr{\mathds{1}}}
+%\newcommand{\lbar}{\mbox{\textipa\textcrlambda}}
+%\renewcommand{\unit}[1]{\ \mathrm{#1}}
+%\newcommand{\diff}[2][]{\ \mathrm{d}^{#1}#2}
+%\newcommand{\ddiff}[3][]{\ \mathrm{d}^{#1}#2\mathrm{d}^{#1}#3}
+%\newcommand{\dddiff}[4][]{\ \mathrm{d}^{#1}#2\mathrm{d}^{#1}#3\mathrm{d}^{#1}#4}
+%\newcommand{\ham}{\mathcal{H}}
+%\newcommand{\opr}[1]{\hat{#1}}
+%\newcommand{\tposed}[1]{#1^{\text{T}}}
+%\newcommand{\pcomm}[2]{\comm{#1}{#2}_{PB}}
+%\newcommand{\Ut}{\opr{\mathcal{U}}}
+%\newcommand{\pot}{\mathcal{U}}
+%\newcommand{\lc}[1]{\epsilon_{#1}}
+%\newcommand{\kd}[1]{\delta_{#1}}
+%\newcommand{\kdopr}[1]{\opr{\delta}_{#1}}
+%\newcommand{\mc}[1]{\mathcal{#1}}
+%\newcommand{\ladopru}[1]{\opr{#1}_{+}}
+%\newcommand{\ladoprd}[1]{\opr{#1}_{-}}
+%\newcommand{\ladoprpm}[1]{\opr{#1}_{\pm}}
+%\newcommand{\vecopr}[1]{\opr{\vec{#1}}}
+%\newcommand{\up}{\uparrow}
+%\newcommand{\down}{\downarrow}
+%\newcommand{\hilbert}{\mathbb{H}}
+%\newcommand{\sph}{Y^{m_l}_l(\theta,\phi)}
+%\newcommand{\tsph}{\mc{Y}^{ls}_{jm}(\theta,\phi)}
+%\newcommand{\oham}{\opr{\mathcal{H}}}
+%\newcommand{\sla}[1]{\slashed{#1}}
+%\newcommand{\term}[3][]{^{#3}#2_{#1}}
+%\renewcommand{\F}{\hat{\mathcal{F}}}
+%\newcommand{\act}{\mathcal{S}}
+%\newcommand{\lag}{\mathcal{L}}
+%\newcommand{\dopr}{\hat{\rho}}
+%\newcommand{\qsum}{\sideset{}{'}\sum}
+%\newcommand{\nuc}[4][]{ {}_{#4}^{#3}{\mathrm{#2}}_{#1} } %\nuc[N]{M}{A}{Z}
+%\DeclarePairedDelimiter\rounding{\lceil}{\rfloor}
 %%
-%%
+%\newtheorem{pos}{Postulate}
+%\newtheorem{defn}{Definition}[section]
+%\newtheorem{law}{Law}
+%
+%
 \begin{document}
 \subfile{./title/title}
 \subfile{./title/frontispice}
@@ -175,9 +171,8 @@
 \nocite{quantistica,landau3,statistica,struttura,struttura1,griffmq,sakuraimqm,patritesta,molekulphysik,complessa,griffpart,nucleare,relativitat,relativita,pdg,griffpart,thermoditt}
 \printbibliography
 \end{document}
-%a
-%\usepackage[style=alphabetic]{biblatex}
-%\addbibresource{~/Dropbox/appunti/bibliografia/bib.bib}
+%
+%
 %\usepackage{subfiles}
 %\usepackage{microtype}
 %\usepackage{mathtools}
@@ -187,7 +182,7 @@
 %\usepackage{fontspec}
 %\usepackage{lmodern}
 %\usepackage[]{graphicx}
-\graphicspath{{./images/}}
+%\graphicspath{{./images/}}
 %\usepackage{physics}
 %\usepackage{pgfplots}
 %\pgfplotsset{compat=1.16}
