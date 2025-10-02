@@ -1,0 +1,82 @@
+\documentclass[../mmf.tex]{subfiles}
+\begin{document}
+\chapter{Asymptotic Analysis}
+\section{Asymptotic Expansion of a Function}
+\begin{dfn}[Asymptotic Expansion]
+	Given a function $f(z)$, \textit{non-analytic} in a point $z_0$, can be \textit{asymptotically expanded} to a series around $z_0$
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{N}f_{k}(z)+R_{N}(z)
+	\end{equation*}
+	Where $R_N(z)$ is the remainder of the series, and
+	\begin{equation*}
+		\lim_{z\to z_0}\norm{R_N(z)}=\lim_{z\to z_0}\norm{f(z)-\sum_{k=0}^{N}f_{k}(z)}=0
+	\end{equation*}
+	Then, for $z\in B_{\epsilon}(z_0)$
+	\begin{equation*}
+		f(z)\sim\sum_{k=0}^{\infty}f_{k}(z)
+	\end{equation*}
+	Note that the expansion is valid only on some regions of $\Cf$
+\end{dfn}
+\begin{eg}[Evaluation Techniques I: Integration by Parts]
+	Suppose you have a function defined as an integral as follows
+	\begin{equation*}
+		F_{t}(x)=\int_{\R_+}^{}e^{-xt}\sin(t)\ \dd^{}{t}
+	\end{equation*}
+	Integrating by parts we have
+	\begin{equation*}
+		F_{t}(x)=\left.-\frac{e^{-xt}}{x}\sin(t)\right|_{\R_+}+\int_{\R_+}^{}\frac{e^{-xt}}{x}\cos(t)\ \dd^{}{t}=\frac{1}{x^2}+\frac{1}{x^2}\int_{\R_+}e^{-xt}\sin(t)\ \dd t
+	\end{equation*}
+	I.e.
+	\begin{equation*}
+		F_t(x)=\frac{1}{x^2}\left( 1+F_t(x) \right)
+	\end{equation*}
+	Solving for $F_t(x)$ we get
+	\begin{equation*}
+		F_{t}(x)=\frac{1}{1+x^2}
+	\end{equation*}
+	The ``asymptotic'' expansion of this function can be obtained by expanding $\sin(t)$ as a Taylor-Maclaurin series, and then integrating 
+	\begin{equation*}
+		\frac{1}{1+x^2}=\sum_{k=0}^{\infty}\frac{(-1)^{2k+1}}{(2k+1)!}\int_{\R_+}^{}t^{2k+1}e^{-xt}\ \dd^{}{t}=\sum_{k=0}^{\infty}\frac{(-1)^{2k+1}}{(2k+1)!}\frac{1}{x^{2k+2}}\int_{\R_+}^{}y^{2k+1}e^{-y}\ \dd^{}{y}
+	\end{equation*}
+	Via the definition of Euler's Gamma function we can rewrite it as
+	\begin{equation*}
+		\frac{1}{1+x^2}=\sum_{k=0}\frac{(-1)^{2k+1}}{(2k+1)!}\frac{\Gamma\left( 2k+2 \right)}{x^{2k+2}}=\sum_{k=0}^{\infty}\frac{(-1)^{2k+1}}{x^{2k+2}}
+	\end{equation*}
+	Where we used the identity $n!=\Gamma(n+1)$. This is a \textit{full expansion}, since the series converges for $\abs{x}>1$
+\end{eg}
+\begin{eg}[The Integral Exponential]
+	Define the integral exponential function $\Ei(x)$ as the following integral function, which cannot be represented via common functions.
+	\begin{equation}
+		\Ei(x)=\int_{x}^{\infty}\frac{e^{-t}}{t}\ \dd^{}{t}
+		\label{eq:eifn}
+	\end{equation}
+	Integrating by parts, it's immediate to see that the boundary values contribute, differently to what we have seen before, and thus
+	\begin{equation*}
+		\Ei(x)=\frac{e^{-x}}{x}-\frac{e^{-x}}{x^2}+2\frac{e^{-x}}{x^3}-3!\frac{e^{-x}}{x^4}+\cdots
+	\end{equation*}
+	Or, in terms of series, we can write
+	\begin{equation*}
+		\Ei(x)=e^{-x}\sum_{k=1}^{N}(-1)^{k-1}\frac{(k-1)!}{x^k}+(-1)^{N}N!\int_{x}^{\infty}\frac{e^{-t}}{t^{N+1}}\ \dd^{}{t}
+	\end{equation*}
+	Where the second term on the right is the remainder $R_N(x)$. It's immediate that $\abs{R_{N}(x)}\le N!\frac{e^{-x}}{x^{N+1}}$, and therefore
+	\begin{equation*}
+		\begin{aligned}
+			\lim_{N\to\infty}\abs{R_N(x)}&\ne0\\
+			\lim_{x\to\infty}\abs{R_N(x)}&= 0
+		\end{aligned}
+	\end{equation*}
+	Therefore, we can say that the function $\Ei(x)$ can be \textit{asymptotically expanded} by the series
+	\begin{equation*}
+		\Ei(x)\sim e^{-x}\sum_{k=1}^{\infty}(-1)^{k-1}\frac{(k-1)!}{x^{k}}
+	\end{equation*}
+
+\end{eg}<++>
+\section{Analytic Continuation and Stokes' Phenomenon}
+\subsection{Analytic Continuation}
+\subsection{Stokes' Phenomenon}
+\section{Saddle Point Approximation}
+\section{Abel-Plana and Euler-Maclaurin Formulas}
+\subsection{Euler-Maclaurin Summation Method}
+\subsection{Abel-Plana Formula}
+\section{WKB Approximation}
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\chapter{Useful Expansions}
+\section{Common Laurent and Taylor Series}
+\begin{equation}
+	e^z=\sum_{n=0}^\infty\frac{z^n}{n!}\quad\norm{z}<\infty
+	\label{eq:expser}
+\end{equation}
+\begin{equation}
+	\sin(z)=\frac{1}{2i}\left( e^{iz}-e^{-iz} \right)=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)!}z^{2n+1}\quad\norm{z}<\infty
+	\label{eq:sinser}
+\end{equation}
+\begin{equation}
+	\cos(z)=\derivative{z}\sin(z)=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!}z^{2n}\quad\norm{z}<\infty
+	\label{eq:cosser}
+\end{equation}
+\begin{equation}
+	\cosh(z)=\cos(iz)=\sum_{n=0}^{\infty}\frac{z^{2n}}{(2n)!}\quad\norm{z}<\infty
+	\label{eq:coshser}
+\end{equation}
+\begin{equation}
+	\sinh(z)=\derivative{z}\cosh(z)=\sum_{n=0}^{\infty}\frac{z^{2n+1}}{(2n+1)!}\quad\norm{z}<\infty
+	\label{eq:sinhser}
+\end{equation}
+\begin{equation}
+	\frac{1}{1-z}=\sum_{n=0}^{\infty}z^n\quad\norm{z}<1
+	\label{eq:geomser}
+\end{equation}
+\begin{equation}
+	\frac{1}{1+z}=\sum_{n=0}^{\infty}(-1)^nz^n\quad\norm{z}<1
+	\label{eq:geomminoneser}
+\end{equation}
+\begin{equation}
+	\frac{1}{z}=\sum_{n=0}^{\infty}(-1)^n(z-1)^n\quad\norm{z-1}<1
+	\label{eq:zminoneser}
+\end{equation}
+\begin{equation}
+	(1+z)^s=\sum_{n=0}^{\infty}\begin{pmatrix}s\\n\end{pmatrix}z^n\quad s\in\Cf,\ \norm{z}<1
+	\label{eq:binomser}
+\end{equation}
+\begin{equation}
+	e^{\frac{1}{z}}=\sum_{n=0}^{\infty}\frac{1}{n!z^n}\quad0<\norm{z}<\infty
+	\label{eq:explaur}
+\end{equation}
+\end{document}

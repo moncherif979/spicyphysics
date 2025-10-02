@@ -1,0 +1,1838 @@
+\documentclass[../mmf.tex]{subfiles}
+\begin{document}
+\chapter{Abstract Spaces}
+\section{Sets, Rings, Fields and Groups}
+\begin{dfn}[Set]
+	A set $X$ is a collection of elements $x\in X$. e.g. $\N=\left\{ 1, 2, 3\cdots \right\}$ is the set of natural numbers
+\end{dfn}
+\begin{thm}[Extension Principle]
+	Let $X, Y$ be two sets and $x\in X, y\in Y$, then
+	\begin{equation*}
+		X=Y\iff{}x=y\ \forall x\in X\wedge\forall y\in Y
+	\end{equation*}
+\end{thm}
+\begin{dfn}[Subset]
+	A set $X$ is contained in a set $Y$ if $\forall x\in X\implies{}x\in Y$.\\
+	$X$ is known as a \textit{subset} of $Y$, $X\subset Y$
+\end{dfn}
+\begin{dfn}[Operations on Sets]
+	Given two sets $X, Y$, the union $Z=X\cup Y$ is the set
+	\begin{equation*}
+		Z=\left\{ z\in Z\st z\in X\vee z\in Y \right\}
+	\end{equation*}
+	The intersection $W=X\cap Y$ is the set
+	\begin{equation*}
+		W=\left\{ w\in W\st w\in X\wedge w\in Y \right\}
+	\end{equation*}
+	The difference $V=X\setminus Y$ is the set
+	\begin{equation*}
+		V=\left\{ v\in V\st v\in X\wedge v\not\in Y \right\}
+	\end{equation*}
+	The cartesian product $U=X\times Y$ is the set of ordered pairs of the two sets, i.e.
+	\begin{equation*}
+		u=(x, y)\qquad x\in X\ y\in Y
+	\end{equation*}
+	If $Y=X$, the cartesian product is $U=X\times X=X^2$. It's generalizable to $n-$tuples
+\end{dfn}
+\begin{dfn}[Ring]
+	A \textit{ring} is a set $A$ such that
+	\begin{itemize}
+	\item Exists a function sum $+$ defined as
+		\begin{equation*}
+			\begin{aligned}
+				+:A\times A&\fto A\\
+				(a_1, a_2)&\longmapsto a_1+a_2
+			\end{aligned}
+		\end{equation*}
+	\item Exists a function product $\times$ defined as
+		\begin{equation*}
+			\begin{aligned}
+				\times:A\times A&\fto A\\
+				(a_1, a_2)&\longmapsto a_1\times a_2
+			\end{aligned}
+		\end{equation*}
+	\item There's a sum identity $0$ $$\exists0\in A\st0+a=a+0=a$$
+	\item The sum is commutative $$\forall a_1, a_2\in A\qquad a_1+a_2=a_2+a_1$$
+	\item There's always a sum inverse $$a\in A\implies\exists w\in A\st a+w=0$$
+	\item The product is associative $$\forall a_1, a_2, a_3\in A, \quad a_1\times(a_2\times a_3)=(a_1\times a_2)\times a_3$$
+	\item The product is distributive $$\forall a_1, a_2, a_3\in A, \quad a_1\times(a_2+a_3)=a_1\times a_2+a_1\times a_3$$
+	\end{itemize}
+	If also
+	\begin{itemize}
+	\item The product is commutative $$\forall a_1, a_2\in A, \quad a_1\cdot a_2=a_2\cdot a_1$$
+	\end{itemize}
+	The ring is known as \textit{Abelian} or \textit{commutative}.
+	Or, if the following property is also satisfied
+	\begin{itemize}
+	\item There's an \textit{identity} $1\in A$ such that
+		$$\forall a\in A, \quad 1\times a= a\times 1$$
+	\end{itemize}
+	The ring is known as a ring with unity.\\
+	A ring without unity is also indicated as a \textit{rng}, while a ring with unity is indicated as a \textit{ring}.
+	The usual triples $(\Z, +, \times), \quad (\Q, +, \times), \quad (\R, +, \times)$ are abelian rings. The set of even whole numbers $(\Z\setminus\left\{ 2n+1 \right\}, +, \times)$ is an abelian rng.
+\end{dfn}
+\begin{thm}[Unicity of the Additive Identity]
+	Said $(A, +, \times)$ a rng, then, $\forall a\in A$
+	$$\exists!0\in A\st 0+a=a$$
+	It also follows that $0\times a=0$
+\end{thm}
+\begin{thm}[Unicity of the Multiplicative Identity]
+	Said $(A, +, \times)$ a ring, then, $\forall a\in A$
+	$$\exists!1\in A\st 1\times a=a$$
+\end{thm}
+\begin{dfn}[Field]
+	An abelian ring $(A, +, \times)$ is said to be a \textit{field} if 
+	$$\forall 0\ne a\in A, \quad\exists! b\in A\st a\times b=1$$
+	The inverse element is denoted as $a^{-1}$
+\end{dfn}
+\begin{dfn}[Subrings and Subfields]
+	If $A$ is a ring, a subset $B\subset A$ is a subring if
+	\begin{itemize}
+	\item $B$ contains the identity for the sum and for the multiplication
+		$$0, 1\in B$$
+	\item for $b_1, b_2\in B$, then
+		$$b_1+b_2\in B, \quad b_1\times b_2\in B$$
+	\end{itemize}
+	If $A$ is a field, then $B$ is a subfield if also
+	\begin{itemize}
+	\item The inverse is in $B$ $$\forall 0\ne b\in B, \quad b^{-1}\in B$$
+	\end{itemize}
+	I.e., $B\subset A$ is a \textit{subring} if $A$ and $B$ are rings, it's a subfield if $A$ and $B$ are fields
+\end{dfn}
+\begin{dfn}[Polynomial Ring]
+	Given $(A, +, \times)$ a ring, $B\subset A$ a subring and $\alpha\in A$. The subset
+	$$B[\alpha]:=\left\{ \sum_{k=0}^{n}b_k\times\alpha^k\st b_k\in B, \alpha\in A \right\}$$
+	Is known as the subring of polynomials in $\alpha$ with coefficients in $B$.\\
+\end{dfn}
+\begin{dfn}[Algebraics and Trascendentals]
+	Given a ring $A$ and a field $\F$, taken $b_k\in\F, 0\le k\le n$ with $b_0\ne 0$, $\alpha$ is \textit{algebraic} if
+	$$\sum_{k=0}^{n}b_k\times\alpha^k=0$$
+	Otherwise, $\alpha$ is \textit{transcendental}
+\end{dfn}
+\begin{thm}
+	Given $\F$ a field, and $\Kf\subset\F$ a subfield, $\Kf[\alpha]$ is a field if and only if $\alpha$ is algebraic
+\end{thm}
+\begin{dfn}[Homomorphism of Abelian Rings]
+	Given $A, B$ abelian rings, a function $f:A\fto B$ is a homomorphism if
+	\begin{itemize}
+	\item $f(1)=1$
+	\item Given $a_1, a_2\in A$, 
+		$$f(a_1+a_2)=f(a_1)+f(a_2)\quad f(a_1\times a_2)=f(a_1)\times f(a_2)$$
+	\end{itemize}
+	If $f$ is bijective, then $f$ is an \textit{isomorphism}, while if $f(A)\subseteq A$ then $f$ is an \textit{automorphism}
+\end{dfn}
+\begin{dfn}[Group]
+	A set $G$ with a function $\cdot$ defined as
+	\begin{equation*}
+		\begin{aligned}
+			\cdot:G\times G&\fto G\\
+			(a, b)&\longmapsto a\cdot b
+		\end{aligned}
+	\end{equation*}
+	Is a \textit{group} if
+	\begin{itemize}
+	\item $\exists! e\in G$ unity such that
+		$$e\cdot g=g\cdot e=g$$
+	\item Given $a\in G$, $\exists b \in G$ such that
+		$$a\cdot b=b\cdot a=e$$
+	\item Given $a, b, c\in G$, the function is associative
+		$$(a\cdot b)\cdot c=a\cdot(b\cdot c)$$
+	\end{itemize}
+	If $a\cdot b=b\cdot a$, the group is Abelian, and the operation is usually denoted with $+$
+\end{dfn}
+\begin{dfn}[Subgroup]
+	Given a group $(G,\cdot)$ and a subset $H\subset G$, then $H$ is a \textit{subgroup} of $G$ if $(H,\cdot)$ is a group
+\end{dfn}
+\begin{dfn}[Group Homomorphism]
+	Given $F, G$ groups and a function $f:G\fto F$, $f$ is a \textit{group homomorphism} if
+	\begin{itemize}
+	\item Given $g_1, g_2\in G$
+		$$f(g_1\cdot g_2)=f(g_1)\cdot f(g_2)$$
+	\end{itemize}
+	If $f$ is bijective it's known as a \textit{group isomorphism} and the groups $F$ and $G$ are said \textit{isomorphic}
+\end{dfn}
+\section{Metric Spaces}
+\subsection{Topology}
+\begin{dfn}[Metric Space]
+	Let $X$ be a non-empty set equipped with an application $d$, defined as follows
+	\begin{equation}
+		\begin{aligned}
+			d\st&X\times X\fto\F\\
+			&(x,y)\to d(x,y)
+		\end{aligned}
+		\label{eq:distdef}
+	\end{equation}
+	Where $\F$ is an ordered field.\\
+	The couple $(X,d)$ is said to be a \textit{metric space}, if and only if $\forall x,y,z\in X$ the application $d$ satisfies the following properties
+	\begin{enumerate}
+	\item $d(x,y)\ge0$
+	\item $d(x,x)=0$
+	\item $d(x,y)=d(y,x)$
+	\item $d(x,y)\le  d(x,z)+d(z,y)$
+	\end{enumerate}
+\end{dfn}
+\begin{dfn}[Ball]
+	Let $(X,d)$ be a metric space. We then define the \textit{open ball of radius} $r$, centered in $x$ in $X$ ($B_r^X$), and the \textit{closed ball of radius} $r$ centered in $x$ ($\cc{B_r^X}$) as follows
+	\begin{equation}
+		\begin{aligned}
+			B_r^X(x):&=\{\derin{u\in X}d(u,x)<r\}\\
+			\cc{B_r^X}(x):&=\{\derin{u\in X}d(u,x)\le r\}
+		\end{aligned}
+		\label{eq:openclosedball}
+	\end{equation}
+	When there won't be doubts on on where the ball is defined, the superscript indicating the set of reference will be omitted.
+\end{dfn}
+We're now ready to define the \textit{topology} on a metric space
+\begin{dfn}[Open Set]
+	Let $(X,d)$ be a metric space, and $A\subseteq X$ a subset. $A$ is said to be an \textit{open set} if and only if
+	\begin{equation}
+		\forall x\in X\ \exists B_r^X(x)\subset A
+		\label{eq:opensetdef}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Complementary Set]
+	Let $A$ be a generic set, then the set $\comp{A}$ is defined as follows
+	\begin{equation}
+		\comp{A}:=\{a\notin A\}
+		\label{eq:compsetdef}
+	\end{equation}
+	This set is said to be the \textit{complementary set} of $A$.\\
+	It's also obvious that $A\cap\comp{A}=\{\}$
+\end{dfn}
+\begin{dfn}[Closed Set]
+	Alternatively to the notion of open set, we can say that $E\subseteq X$ is a \textit{closed set}, if and only if
+	\begin{equation}
+		\forall x\in\comp{E}\cap X\ \exists B_r^X(x)\subset\comp{E}\cap X
+		\label{eq:closedsetdef}
+	\end{equation}
+\end{dfn}
+\begin{rmk}
+	A set isn't necessarily open nor closed!
+\end{rmk}
+\begin{prop}
+	\begin{enumerate}
+	\item The set $B_r^X(x)$ is open
+	\item The set $\cc{B_r^X}(x)$ is closed
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Let $A=B_r^X(x)$. If $A$ is open, we have therefore, applying the definition of open set, that
+	\begin{equation*}
+		\forall x\in A\ \exists\epsilon>0\st B^X_\epsilon(x)\subset A
+	\end{equation*}
+	So
+	\begin{equation*}
+		\begin{aligned}
+			&x_0\in A\implies{} d(x,x_0)<r\\
+			&\therefore\epsilon=r-d(x,x_0)>0
+		\end{aligned}
+	\end{equation*}
+	Then, by definition of open ball we have
+	\begin{equation*}
+		y\in B^X_\epsilon(x)\implies{} d(x,y)<\epsilon
+	\end{equation*}
+	Then, we can say that
+	\begin{equation*}
+		\begin{aligned}
+			&d(y,x_0)\le d(y,x)+d(x,x_0)<\epsilon+d(x,x_0)=r\\
+			&\therefore y\in B^X_\epsilon(x)\implies{} y\in B^X_r(x_0)\subset A
+		\end{aligned}
+	\end{equation*}
+	The demonstration of the second point is exactly the same, whereby we take $E$ as our closed ball and $A=\comp{E}$
+\end{proof}
+\begin{prop}
+	Let $(X,d)$
+	\begin{enumerate}
+	\item The sets $\{\},X$ are open
+	\item The sets $\{\},X$ are closed
+	\item If $\{A_i\}_{i=1}^n$ is a collection of open sets, then $A=\bigcap_{i=1}^nA_i$ is open
+	\item If $\{C_i\}_{i=1}^n$ is a collection of closed sets, then $C=\bigcup_{i=1}^nC_i$ is closed
+	\item Let $I\subset\N$ be an index set, then
+		\begin{enumerate}
+		\item If $\{A_\alpha\}_{\alpha\in I}$ is a collection of open sets, then $B=\bigcup_{\alpha\in I}A_\alpha$ is open
+		\item If $\{C_\alpha\}_{\alpha\in I}$ is a collection of closed sets, then $D=\bigcap_{\alpha\in I}C_{\alpha}$ is closed
+		\end{enumerate}
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	The first two statements are of easy proof. Let $B^X_\epsilon\subset\{\}$. This means that $B^X_\epsilon$ is empty and therefore $B^X_\epsilon=\{\}$, which makes it open by definition. Therefore we have that $\comp{\{\}}=X$, and $X$ must be closed, but if we reason a bit, we can say that $\forall x\in X\ B_\epsilon^X(x)\subset X$, which means that $X$ is open, thus $\comp{X}=\{\}$ must be closed.\\
+	Since we gave a proof for $\{\}$ and $X$ being open, we have that these two sets are both open and closed. These two sets are said to be \textit{clopen}.\\
+	For the other statements we use the De Morgan laws on set calculus, therefore we have
+	\begin{equation*}
+		\begin{aligned}
+			&x\in\bigcap_{i=1}^nA_i\implies{} x\in A_i\\
+			&\therefore\exists\epsilon_i\st B^X_{\epsilon_i}(x)\subset A_i\\
+		\end{aligned}
+	\end{equation*}
+	Taking $\epsilon=\min_{i\in I}\epsilon_i$ we have
+	\begin{equation*}
+		B_\epsilon^X(x)\subset B_\epsilon^X(x)\implies{} B_\epsilon^X(x)\subset\bigcap_{i=1}^nA_i=A
+	\end{equation*}
+	And $A$ is open\\
+	If we let $C=\comp{A}$ we have that\\
+	\begin{equation*}
+		\begin{aligned}
+			&C=\comp{A}=\comp{\left( \bigcap_{i=1}^nA_i \right)}=\bigcup_{i=1}^n\comp{A}_i\\
+			&\therefore{C}\text{ is closed}
+		\end{aligned}
+	\end{equation*}
+	For the last two we proceed as follows
+	\begin{equation*}
+		\begin{aligned}
+			&x\in A_\alpha\implies{}\exists\alpha_0\in I\st x\in A_{\alpha_0}\\
+			&\therefore\exists\epsilon>0\st B_{\epsilon}^X(x)\subset A_{\alpha_0}\subset\bigcup_{\alpha\in I}=B
+		\end{aligned}
+	\end{equation*}
+	For the last one, we use the De Morgan laws and the proposition is demonstrated
+\end{proof}
+\begin{dfn}[Internal Points, Closure, Border]
+	Let $(X,d)$ be a metric space and $A\subset X$ a subset.\\
+	We define the following sets from $A$
+	\begin{enumerate}
+	\item $\intr{A}=\bigcup_{\alpha\in I}G_\alpha$ is the set of internal points of $A$, where $I$ is an index set and $G_{\alpha}\subset A$ are open
+	\item $\cc{A}=\bigcap_{\beta\in J}F_\beta$ is the closure of $A$, where $J$ is another index set and $F_\beta\subset A$ are closed
+	\item $\partial{A}=\cc{A}\setminus\intr{A}=\cc{A}\cup\comp{\left(\intr{A}\right)}$ is the border of $A$
+	\end{enumerate}
+\end{dfn}
+\begin{prop}
+	\begin{enumerate}
+	\item $A$ is an open set iff $A=\intr{A}$
+	\item $A$ is closed iff $A=\cc{A}$
+	\item $\intr{A}=\comp{\cc{\left( \intr{A} \right)}}$
+	\item $\cc{A}=\comp{\left[ \intr{\left( \comp{A} \right)} \right]}$
+	\item $\intr{\left( A\cap B \right)}=\intr{A}\cap\intr{B}$
+	\item $\cc{A\cap B}=\cc{A}\cup\cc{B}$
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Let $\mathcal{O}(A)$ be a collection of open sets, such that $\forall{G}\in\mathcal{O}(A)\implies{} G\subset A$, then
+	\begin{equation*}
+		A=\intr{A}\implies{} A=\bigcup_{G\in\mathcal{O}(A)}G
+	\end{equation*}
+	Therefore, being a union of a finite number of open sets, $A$ is open.\\
+	For the same reason as before and the previous proposition, we have that $\cc{A}$ is closed\\
+	For the third proposition, we have
+	\begin{equation*}
+		\comp{\left( \cc{\comp{A}} \right)}=\comp{\left( \bigcap_{\comp{A}\subset F}F \right)}=\bigcup_{\comp{A}\subset F}\comp{F}=\bigcup_{G\in\mathcal{O}(A)}G=\intr{A}
+	\end{equation*}
+	The others are easily demonstrated throw this process, iteratively
+\end{proof}
+\begin{prop}
+	Let $(X,d)$ be a metric space, and $A\subset X$, $x\in X$
+	\begin{enumerate}
+	\item $x\in A\iff\exists\epsilon>0\st B_\epsilon(x)\subset A$
+	\item $x\in\cc{A}\iff\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}$
+	\item $x\in\partial A\iff\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}\wedge B_\epsilon(x)\cap\cc{A}\ne\{\}$
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+		$\boxed{1}$ Let $I(A):=\{\derin{x\in X}\exists\epsilon>0\st B_\epsilon(x)\subset A$\}\\
+		\begin{equation*}
+			x\in I(A)\implies{}\exists\epsilon>0\st B_\epsilon(x)\subset A,\ \therefore x\in\bigcup_{G\subset A}G
+		\end{equation*}
+		But
+		\begin{equation*}
+			\begin{aligned}
+				&x\in\intr{A}\implies{}\exists G\subset X\text{ open}\st x\in G\implies{}\exists\epsilon>0\st B_\epsilon(x)\subset G\subset A\\
+				&\therefore\intr{A}\subset I(A)\ni x,\ I(A)\subset A\text{ by definition, }\therefore I(A)=\intr{A}
+			\end{aligned}
+		\end{equation*}
+		$\boxed{2}$ For the second proposition, we have
+		\begin{equation*}
+			\begin{aligned}
+				&\cc{A}=\comp{\left[ \intr{\left( \comp{A} \right)} \right]}\implies{} x\in A\iff x\in\intr{\left( \comp{A} \right)}\implies{}\forall\epsilon>0\ B_\epsilon(x)\not\subset\comp{A}\\
+				&\therefore\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}
+			\end{aligned}
+		\end{equation*}
+		$\boxed{3}$ For the last one, we have, taking into account the first two proofs
+		\begin{equation*}
+			\begin{aligned}
+				&x\in\partial A\iff x\in\cc{A}\setminus\intr{A}\implies{} x\in\cc{A}\wedge x\notin\intr{A}\\
+				&\boxed{1}\wedge\boxed{2}\implies{} x\in\cc{A}\iff\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}\\
+				&\therefore x\notin\intr{A}\iff\forall\epsilon>0\ B_\epsilon(x)\cap\comp{A}\ne\{\}
+			\end{aligned}
+		\end{equation*}
+\end{proof}
+\begin{dfn}[Isometry]
+	Let $(X,d),(Y,\rho)$ be two metric spaces and $f$ an application, defined as follows
+	\begin{equation*}
+		f:(X,d)\to(Y,d)
+	\end{equation*}
+	$f$ is said to be an \textit{isometry} iff
+	\begin{equation*}
+		\forall x_1,x_2\in X,\ \rho(f(x_1),f(x_2))=d(x_1,x_2)
+	\end{equation*}
+\end{dfn}
+\begin{rmk}
+	If $f$ is an isometry, then $f$ is injective, but it's not necessarily surjective
+\end{rmk}
+\begin{eg}
+	Let $X=[0,1]$ and $Y=[0,2]$, therefore
+	\begin{equation*}
+		\begin{aligned}
+			f:&[0,1]\to[0,2]\\
+			&x\to f(x)=x
+		\end{aligned}
+	\end{equation*}
+	$f$ is obviously an isometry, since, for $x,y\in[0,1]$
+	\begin{equation*}
+		d(f(x),f(y))=d(x,y)
+	\end{equation*}
+	But it's obviously not surjective.
+\end{eg}
+\begin{dfn}[Diameter of a Set]
+	Let $A$ be a set and the couple $(A,d)$ be a metric space. We define the \textit{diameter} of $A$ as follows
+	\begin{equation*}
+		\diam{(A)}=\sup_{x,y\in A}(d(x,y))
+	\end{equation*}
+\end{dfn}
+\subsection{Sequences of Functions}
+\begin{dfn}[Sequence of Functions]
+	Let $S$ be a set and $(X,d)$ a metric space, a \textit{sequence of functions} is defined as follows
+	\begin{equation}
+		\begin{aligned}
+			f_n:&S\fto(X,d)\\
+			&s\to f_n(s)
+		\end{aligned}
+		\label{eq:seqfunc}
+	\end{equation}
+	Where, $\forall n\in\N$ a function $f_{(n)}:S\fto(X,d)$ is defined
+\end{dfn}
+\begin{dfn}[Pointwise Convergence]
+	A sequence of functions $(f_n)_{n\ge0}$ is said to converge pointwise to a function $f:S\fto(X,d)$, and it's indicated as $f_n\to f$, if
+	\begin{equation}
+		\forall\epsilon>0,\ \forall x\in S\ \exists N_\epsilon(x)\in\N\st d(f_n(x),f(x))<\epsilon\ \forall n\ge N_\epsilon(x)
+		\label{eq:pointwiseconv}
+	\end{equation}
+	It can be indicated also as follows
+	\begin{equation}
+		\lim_{n\to\infty}(f_n(x))=f(x)
+		\label{eq:pointwiseconv2}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Uniform Convergence]
+	Defining an $\norm{\cdot}_\infty=\sup_{i\le n}\abs{\cdot}$ we have that the convergence of a sequence of functions is uniform, and it's indicated as $f_n\tto f$, iff
+	\begin{equation}
+		\forall\epsilon>0\ \exists N_\epsilon\in\N\st d(f_n(x),f(x))<\epsilon\ \forall n\ge N_\epsilon\ \forall x\in S
+		\label{eq:uniformconv}
+	\end{equation}
+	Or, using the norm $\norm{\cdot}_{\infty}$
+	\begin{equation}
+		\forall\epsilon>0\ \exists N_\epsilon\in\N\st\norm{f_n-f}_{\infty}<\epsilon
+		\label{eq:uniformconv2}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Continuity of Uniformly Convergent Sequences]
+	Let $(f_n)_{n\ge0}:(S,d_S)\fto(X,d)$ be a sequence of continuous functions. Then if $f_n\tto f$, we have that $f\in C(S)$, where $C(S)$ is the space of continuous functions
+\end{thm}
+\begin{proof}
+	\begin{equation}
+		\begin{aligned}
+			&\forall x\in S,\ \exists\epsilon>0\st f_n\tto f,\ \therefore\forall n\ge N_\epsilon\in\N\st d(f_n(x),f(x))<\frac{\epsilon}{3}\\
+			&f_n\in C(S)\implies{}\ \exists\delta_\epsilon>0\st d(f_n(x),f_n(y))<\frac{\epsilon}{3},\ \forall x,y\in S\st d_S(x,y)<\delta\\
+			&\therefore d(f(x),f(y))\le d(f(x),f_n(x))+d(f_n(x),f_n(y))+d(f_n(y),f(y))<\epsilon\iff d_S(x,y)<\delta_\epsilon
+		\end{aligned}
+		\label{eq:proofustopwc}
+	\end{equation}
+\end{proof}
+\begin{thm}[Integration of Sequences of Functions]
+	Let $(f_n)_{n\ge0}$ be a sequence of functions such that $f_n\tto f$
+	Then we can define the following equality
+	\begin{equation}
+		\lim_{n\to\infty}\int_a^bf_n(x)\diff x=\int_a^b\lim_{n\to\infty}f_n(x)\diff x=\int_a^bf(x)\diff x
+		\label{eq:seqint}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	We already know that in the closed set $[a,b]$ we can say, since $f_n\tto f$, that
+	\begin{equation}
+		\forall\epsilon>0\ \exists N_\epsilon\in\N\st\forall n\ge N_\epsilon\ \norm{f_n-f}_{\infty}<\frac{\epsilon}{b-a}
+		\label{eq:seqint1}
+	\end{equation}
+	Then, we have that
+	\begin{equation}
+		\forall n\ge N_\epsilon\ \abs{\int_{a}^{b}f_n(x)\diff x-\int_{a}^{b}f(x)\diff x}\le\norm{f_n-f}_\infty(b-a)<\epsilon
+		\label{eq:seqint2}
+	\end{equation}
+\end{proof}
+\begin{thm}[Differentiation of a Sequence of Functions]
+	Define a sequence of functions as $f_n:I\fto\R$, with $f_n(x)\in C^1(I)$. If
+	\begin{enumerate}
+	\item $\exists x_0\in I\st f_n(x_0)\to l$
+	\item $f_n'\tto g\ \forall x\in I$
+	\end{enumerate}
+	Then
+	\begin{equation}
+		f_n(x)\tto f\implies{}\forall x\in I,\ f'(x)=\lim_{n\to\infty}f_n'(x)=g(x)
+		\label{eq:seqder1}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	For the fundamental theorem of integral calculus, we can write, using the regularity of the $f_n(x)$ that
+	\begin{equation*}
+		f_n(x)=f_n(x_0)+\int_{x_0}^{x}f_n(t)\diff t
+	\end{equation*}
+	Taking the limit we have
+	\begin{equation*}
+		\begin{aligned}
+			\lim_{n\to\infty}f_n(x)&=l+\int_{x_0}^{x}g(t)\diff t=f(x)\\
+			\therefore f'(t)&=g(t)
+		\end{aligned}
+	\end{equation*}
+	But, we also have that
+	\begin{equation*}
+		\begin{aligned}
+			\forall\epsilon>0\ \norm{f_n'-f'}_\infty&\le\abs{f_n(x_0)-l}+\norm{f_n'-g}_\infty(b-a)<\epsilon\\
+			&\therefore f_n\tto f,\ f_n'\tto f'
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\subsection{Series of Functions}
+Let now, for the rest of the section, $(X,d)=\Cf$.
+\begin{dfn}[Series of Functions]
+	Let $(f_n)_{n\ge0}\in\Cf$ be a sequence of functions, such that $f_n:S\to\Cf$. We can define the \textit{series of functions} as follows
+	\begin{equation}
+		s_n(x)=\sum_{k=1}^nf_k(x)
+		\label{eq:seriesdef}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Convergent Series]
+	A series of functions $s_n(x):S\to\Cf$ is said to be \textit{convergent} or \textit{pointwise convergent} if
+	\begin{equation}
+		s_n(x)=\sum_{k=0}^nf_k(x)\fto s(x)
+		\label{eq:serconv}
+	\end{equation}
+	Where $s(x):S\to\Cf$ is the \textit{sum} of the series.\\
+	This means that
+	\begin{equation}
+		\forall x\in S,\ \lim_{k\to\infty}s_k(x)=\sum_{k=0}^\infty f_k(x)=s(x)
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Necessary Condition for the convergence of a series of functions:\\
+	Let $(f_n)\in\Cf$ be a succession, then the series $s_n(x)$ defined as follows, converges to the function $s(x)$
+	\begin{equation*}
+		s_n(x)=\sum_{k=0}^nf_k(x)=s(x)=\sum_{k=0}^\infty f_k(x)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	\begin{equation*}
+		\begin{aligned}
+			\forall x\in S\ \lim_{k\to\infty}f_k(x)=\lim_{n\to\infty}\left( s_n(x)-s_{n+1}(x) \right)=0
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Uniform Convergence]
+	A series of functions is said to be \textit{uniformly convergent} if and only if
+	\begin{equation}
+		\sum_{k=0}^\infty f_k(x)\tto s(x)\iff s_n(x)=\sum_{k=0}^nf_k(x)\tto s(x)
+		\label{eq:uniformconvser}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Absolute Convergence]
+	A series of functions is said to be \textit{absolutely convergent} if and only if
+	\begin{equation}
+		\sum_{k=0}^\infty f_k(x)\ato s(x)\implies{}\sum_{k=0}^\infty\abs{f_k(x)}\to s(x)
+		\label{eq:absoluteconvser}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Let $\sum_{k=0}^\infty f_k(x)\ato s(x)$, then
+	\begin{equation}
+		\sum_{k=0}^\infty f_k(x)\ato s(x)\implies{}\sum_{k=0}^\infty f_k(x)\to s(x)
+		\label{eq:abstounif}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let
+	\begin{equation*}
+		\begin{aligned}
+			s_n(x)&=\sum_{k=0}^nf_k(x)\ \therefore\exists g(x):(S,d)\fto\Cf,\ \exists N_\epsilon(x)\in\N\st\abs{g(x)-\sum_{k=0}^\infty f_k(x)}=\\
+			&=\sum_{k=n+1}^{\infty}\abs{f_k(x)}<\epsilon\ \forall n\ge N_\epsilon(x)\\
+			&\therefore\forall n,m\in\N, m>n\\
+			&\abs{s_m(x)-s_n(x)}=\abs{\sum_{k=n+1}^mf_k(x)}\le\sum_{k=n+1}^{\infty}\abs{f_k(x)}<\epsilon\ \forall x\in S\\
+			&\therefore(s_n(x))\text{ is a Cauchy series in }\Cf\implies{} s_k(x)\to s(x)
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Total Convergence]
+	A series of functions $s_k(x)$ is said to be \textit{totally convergent} if
+	\begin{enumerate}
+	\item $\exists M_k\st\sup_{S}\abs{f_k(x)}\le M_k\ \forall k\ge 1$
+	\item $\sum_{k=0}^\infty M_k\to M$
+	\end{enumerate}
+	The total convergence is then indicated as $s_k(x)\Tto s(x)$
+\end{dfn}
+\begin{prop}
+	Let
+	\begin{equation*}
+		s_n(x)=\sum_{k=0}^{n}f_n(x)
+	\end{equation*}
+	Then
+	\begin{enumerate}
+	\item $f_n(x)\in C(S)\wedge s_k(x)\tto s(x)\implies{} s(x)\in C(S)$
+	\item $f_n(x)\in C(S),\ s_k(x)\tto s(x)\implies{}\int s(x)\diff x=\lim_{k\to\infty}\int s_k(x)\diff x$
+	\item $s_k(x)\ato s(x)\implies{} s_k(x)\to s(x)$
+	\item $s_k(x)\tto s(x)\implies{} s_k(x)\ato s(x)$
+	\item $s_k(x)\Tto s(x)\implies{} s_k(x)\tto s(x)$
+	\end{enumerate}
+\end{prop}
+\subsubsection{Power Series and Convergence Tests}
+\begin{thm}[Weierstrass Test]
+	Let $(f_n):(S,d)\to\Cf$ a sequence of functions.\\
+	If we have that
+	\begin{equation*}
+		\begin{aligned}
+			&\forall n>N_\epsilon\in\N\ \exists M_n>0\st\abs{f_n(x)}\le M_n\\
+			&\therefore\forall x\in S\ \sum_{k=0}^nf_k(x)\le\sum_{k=1}^{\infty}M_k\to M\therefore\sum_{k=0}f_k(x)^n\tto s(x)
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{dfn}[Power Series]
+	Let $z,z_0,(a_n)\in\Cf$. A \textit{power series centered in} $z_0$ is defined as follows
+	\begin{equation}
+		\sum_{k=0}^\infty a_k(z-z_0)^k
+		\label{eq:powerseries}
+	\end{equation}
+\end{dfn}
+\begin{eg}
+	Take the \textit{geometric series}. This is the best example of a power series centered in $z_0=0$, and it has the following form
+	\begin{equation}
+		\sum_{k=0}^\infty z^k
+		\label{eq:geometricpw}
+	\end{equation}
+	We can expand it as follows
+	\begin{equation}
+		\sum_{k=0}^{m}z^k=(1-z)\left( 1+z+z^2+\cdots+z^m \right)=1-z^{n+1}=\frac{1+z^{n+1}}{1-z}\ \forall\abs{z}\ne1
+		\label{eq:geometricseries}
+	\end{equation}
+	Taking the limit, we have, therefore
+	\begin{equation}
+		\sum_{k=0}^{\infty}z^k=\frac{1}{1-z}\ \forall\abs{z}<1
+		\label{eq:geometricseriessum}
+	\end{equation}
+\end{eg}
+\begin{thm}[Cauchy-Hadamard Criteria]
+	Let $\sum_{k=0}^{\infty}a_k(z-z_0)^k$ be a power series, with $a_n,z,z_0\in\Cf$. We define the \textit{Radius of convergence} $R\in\R^{\star}=\R\cup\{\pm\infty\}$, with the \textit{Cauchy-Hadamard} criteria
+	\begin{equation}
+		\frac{1}{R}=\limsup_{n\to\infty}\abs{a_n}^{\frac{1}{n}}=\begin{dcases}+\infty&\frac{1}{R}=0\\l&0<\frac{1}{R}=l<\infty\\0&\frac{1}{R}=+\infty\end{dcases}
+		\label{eq:cauchyhadamard}
+	\end{equation}
+	Then $s_k(z)\tto s(z)\ \forall\abs{z}\in(-R,R)$
+\end{thm}
+\begin{thm}[D'Alambert Criteria]
+	From the power series we have defined before, we can write the \textit{D'Alambert criteria} for convergence as follows
+	\begin{equation}
+		\frac{1}{R}=\lim_{k\to\infty}\abs{\frac{a_{k+1}}{a_k}}\implies{} R=\lim_{k\to\infty}\abs{\frac{a_k}{a_{k+1}}}
+		\label{eq:dalambertcriteria}
+	\end{equation}
+	Where $R$ is the previously defined radius of convergence
+\end{thm}
+\begin{thm}[Abel]
+	Let $R>0$, then if a power series converges for $\abs{z}=R$, it converges uniformly $\forall\abs{z}\in[r,R]\subset(-R,R]$. It is valid analogously for $x=-R$
+\end{thm}
+\begin{rmk}[Power Series Integration]
+	If the series has $R>0$ and it converges in $\abs{z}=R$, calling $s(x)$ the sum of the series, with $x=\abs{z}$ we can say that
+	\begin{equation}
+		\int_{0}^{R}s(x)\diff x=\sum_{k=0}^{\infty}\int_{0}^{R}a_kx^k\diff x=\int_0^R\sum_{k=1}^{\infty}a_kx^k\diff z=\sum_{k=0}^{\infty}a_k\frac{R^{k+1}}{k+1}
+		\label{eq:abelint}
+	\end{equation}
+\end{rmk}
+\begin{rmk}[Power Series Derivation]
+	If Abel's theorem holds, we have also that, if we have $s(x)$ our power series sum, we can define the $n-$th derivative of this series as follows
+	\begin{equation}
+		\derivative[n]{s}{x}=\sum_{k=n}^{\infty}k(k-1)\cdots(k-n+1)a_kx^{k-n}
+		\label{eq:nthderpowerseries}
+	\end{equation}
+\end{rmk}
+\subsection{Convergence and Compactness}
+\begin{dfn}[Convergence]
+	Let $(X,d)$ be a metric space and $x\in X$. A sequence $(x_k)_{k\ge0}$ in $X$ is said to converge in $X$ and it's indicated as $x_k\to x\in X$, iff
+	\begin{equation*}
+		\forall\epsilon>0\ \exists N>0\st\forall k\ge N,\ d(x_k,x)<\epsilon\ \therefore\lim_{k\to\infty}x_k=x
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Unicity of the Limit]
+	Let $(X,d)$ be a metric space and $(x_k)_{k\ge0}$ a sequence in $X$. If $x_k\to x\wedge x_k\to y$, then $x=y$
+\end{thm}
+\begin{dfn}[Adherent point]
+	Let $(X,d)$ be a metric space and $A\subset X$. $x\in X$ is said to be an \textit{adherent point} of $A$ if $\exists(x_k)_{k\ge0}\in A\st x_k\to x\in X$. The set of all adherent points of $A$ is called $\ad(A)$
+\end{dfn}
+\begin{dfn}[Accumulation point]
+	Let $(X,d)$ be a metric space and $A\subset X$. $x\in X$ is an \textit{accumulation point} of $A$, or also \textit{limit point} of $A$ if $\exists(x_k)_{k\ge0}\st x_k\ne x\wedge x_k\to x\in\ad(A)$
+\end{dfn}
+\begin{prop}
+	Let $(X,d)$ be a metric space and $A\subset X$, then $\cc{A}=\ad(A)$
+\end{prop}
+\begin{proof}
+	Let $Y=\ad(A)$, then
+	\begin{equation*}
+		\begin{aligned}
+			&x\in\cc{A}\implies{}\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}\\
+			&\therefore\forall n\in\N\ B_{\frac{1}{n}}(x)\cap A\ne\{\}\implies{}\forall n\in\N\ \exists x_n\in B_{\frac{1}{n}}(x)
+		\end{aligned}
+	\end{equation*}
+	But $d(x,x_n)<n^{-1}$, therefore $x\in Y\implies{} x\in\ad(A)$, and by definition
+	\begin{equation*}
+		\begin{aligned}
+			&\exists(x_n)_{n\ge0}\st\forall\epsilon>0\ \exists N\in\N\st\forall k\ge N\ d(x_k,x)<\epsilon\implies{} x_N\in B_\epsilon(x)\ \therefore x_N\in A\\
+			&\therefore\forall\epsilon>0\ x_N\in B_\epsilon(x)\cap A\ne\{\}\implies{} x\in\cc{A}\implies{} Y\subset\cc{A},\ \therefore Y=\ad(A)=\cc{A}
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{prop}
+	Let $(X,d)$ be a metric space and $A\subset X$. Then $A$ is closed iff $\exists(x_k)_{k\ge0}\in A\st x_k\to x\in\cc{A}\implies{}\ad(A)\subset A$
+\end{prop}
+\begin{dfn}[Dense Set]
+	Let $(X,d)$ be a metric space and $A,B\subset X$. $A$ is said to be dense in $B$ iff $B\subset\cc{A}$, therefore $\forall\epsilon>0\ \exists y\in A\st d(x,y)<\epsilon$. One example for this is $\Q\subset\R$, with the usual euclidean distance defined through the modulus.
+\end{dfn}
+\begin{dfn}
+	Let $(X,d)$ be a metric space and $(x_k)_{k\ge0}\in X$. The sequence $x_k$ is said to be a \textit{Cauchy sequence} iff
+	\begin{equation*}
+		\forall\epsilon>0\ \exists N>0\st\forall k,n\ge N\ d(x_k,x_n)<\epsilon
+	\end{equation*}
+\end{dfn}
+\begin{prop}
+	Let $(X,d)$ be a metric space and $(x_k)_{k\ge0}\in X$ a sequence. Then, if $x_k\to x$, $x_k$ is a Cauchy sequence
+\end{prop}
+\begin{dfn}[Complete Space]
+	Let $(X,d)$ be a metric space. $(X,d)$ is said to be \textit{complete} iff $\forall(x_k)_{k\ge0}\in X$ Cauchy sequences, we have $x_k\to x\in X$
+\end{dfn}
+\begin{thm}[Completeness]
+	Let $(X,d)$ be a metric space and $Y\subset X$. $(Y,d)$ is complete iff $Y=\cc{Y}$ in $X$
+\end{thm}
+\begin{proof}
+	Let $(Y,d)$ be a complete space, then
+	\begin{equation*}
+		(x_k)\in Y\text{ Cauchy sequence }\implies{}\exists y\in Y\st x_k\to y
+	\end{equation*}
+	Let $z\in\ad(A)$ and $\eta_k$ a subsequence of $x_k$, then
+	\begin{equation*}
+		\exists(\eta_k)\in Y\st\eta_k\to z\implies{}\exists y\in Y\st\eta_k\to y\ \therefore z=y\implies{} \ad(Y)\subset Y
+	\end{equation*}
+	Going the opposite way we have that $\ad(Y)=Y$ and therefore $Y=\cc{Y}$
+\end{proof}
+\begin{dfn}[Compact Space]
+	A metric space $(X,d)$ is said to be \textit{compact} or \textit{sequentially compact} if
+	\begin{equation*}
+		\forall(x_k)\in X\ x_k\to x\in X, \exists\{(x_{k_n})\}\st x_{k_n}\to x\in X
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Heine-Borel]
+	Let $K\subset\R^n$, then $K$ is compact if and only if $K$ is closed and bounded
+\end{thm}
+\begin{thm}
+	Let $(X,d)$ be a compact space. Then $(X,d)$ is also complete
+\end{thm}
+\begin{proof}
+	$(X,d)$ is compact, therefore
+	\begin{equation*}
+		\forall(x_k)\in X\text{ Cauchy sequence}\implies{} x_k\to x\in X
+	\end{equation*}
+	Taken $(x_{n_k})_k\in X$ a subsequence, we have
+	\begin{equation*}
+		x_{k}\to x\implies{} x_{n_k}\to x\in X
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Completely Bounded]
+	Let $(X,d)$ be a metric space. $X$ is \textit{totally bounded} iff
+	\begin{equation*}
+		\exists Y\subset X\st\forall\epsilon>0,\forall x\in Y\ X=\bigcup_{i=1}^nB_\epsilon(x)
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Poligonal Chain]
+	Let $z,w\in\Cf$. We define a \textit{polygonal} $[z,w]$ as follows
+	\begin{equation*}
+		[z,w]:=\{\derin{z,w\in\Cf}z+t(w-z),\ t\in[0,1]\subset\R\}
+	\end{equation*}
+	A \textit{polygonal chain} will be indicated as follows $P_{z,w}$ and it's defined as follows
+	\begin{equation*}
+		P_{z,w}=\bigcup_{k=1}^{n-1}[z_k,z_{k+1}]=[z,z_1,\cdots,z_{n-1},w]
+	\end{equation*}
+	It can also be defined analoguously for every metric space $(X,d)\ne(\Cf,\norm{\cdot})$, where $\norm{\cdot}:\Cf\to\R$ is the usual complex norm $\norm{z}=\sqrt{z\cc{z}}=\sqrt{\Re(z)^2+\Im(z)^2}$
+\end{dfn}
+\begin{dfn}[Connected Space]
+	Let $(G,d)$ be a metric space, $G$ is \textit{connected} if
+	\begin{equation*}
+		\forall z,w\in G\ \exists P_{z,w}\subset G
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Contraction Mapping]
+	Let $(X,d)$ be a complete metric space. Let $T:X\fto X$. $T$ is said to be a \textit{contraction mapping} or \textit{contractor} if
+	\begin{equation}
+		\forall x,y\in X\ \exists q\in[0,1)\st d(T(x),T(y))\le qd(x,y)
+		\label{eq:contractor}
+	\end{equation}
+	Note that a contractor is necessarily continuous.
+\end{dfn}
+\begin{thm}[Banach Fixed Point]
+	Let $(X,d)$ be a complete metric space, with $X\ne\{\}$ and equipped with a contractor $T:X\fto X$. Then
+	\begin{equation}
+		\exists!x^{\star}\in X\st T(x^\star)=x^\star
+		\label{eq:fixedpointbanach}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Take $x_0\in X$ and a sequence $x_n:\N\fto X$, where
+	\begin{equation*}
+		x_n=T(x_{n-1}),\quad\forall n\in\N
+	\end{equation*}
+	It's obvious that
+	\begin{equation*}
+		d(x_{n+1},x_{n})=d(T(x_{n}),T(x_{n-1}))\le qd(x_n,x_{n-1})\le q^nd(x_1,x_0)
+	\end{equation*}
+	We need to prove that $x_n$ is a Cauchy sequence. Let $m,n\in\N\st m>n$, then
+	\begin{equation*}
+		d(x_m,x_n)\le d(x_m,x_{m-1})+\cdots+d(x_{n+1},x_n)\le q^{m-1}d(x_1,x_0)+\cdots+q^nd(x_1,x_0)
+	\end{equation*}
+	Regrouping, we have
+	\begin{equation*}
+		\begin{aligned}
+			d(x_m,x_n)&\le q^nd(x_1,x_0)\sum_{k=0}^{m-n-1}q^k\le q^nd(x_1,x_0)\sum_{k=0}^{\infty}q^k=q^nd(x_1,x_0)\left( \frac{1}{1-q} \right)
+		\end{aligned}
+	\end{equation*}
+	By definition of convergence, we have then
+	\begin{equation*}
+		\forall\epsilon>0,\ \exists N\in\N\st\forall n>N\ d(s_n,s)<\epsilon
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\frac{q^nd(x_1,x_0)}{1-q}<\epsilon\implies{} q^n<\frac{\epsilon(1-q)}{d(x_1,x_0)},\quad\forall n>N
+	\end{equation*}
+	Therefore, after taking $m>n>N$, we have
+	\begin{equation*}
+		d(x_m,x_n)<\epsilon
+	\end{equation*}
+	Therefore $x_n$ is a Cauchy sequence. Since $(X,d)$ is a complete metric space, this sequence must have a limit $x_n\to x^\star\in X$, but, by definition of convergence and limit, we have that by continuity
+	\begin{equation*}
+		x^\star=\lim_{n\to\infty}x_n=\lim_{n\to\infty}T(x_{n-1})=T\left( \lim_{n\to\infty}x_{n-1} \right)=T(x^\star)
+	\end{equation*}
+	This point is unique. Take $y^\star\in X$ such that $T(y^\star)=y^\star\ne x^\star$, then
+	\begin{equation*}
+		0<d(T(x^\star),T(y^\star))=d(x^\star,y^\star)>qd(x^\star,y^\star)\quad\lightning
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\exists!x^\star\in X\st T(x^\star)=x^\star
+	\end{equation*}
+	And $x^\star$ is the fixed point of the contractor $T$
+\end{proof}
+\section{Normed Vector Spaces and Banach Spaces}
+\subsection{Vector Spaces}
+\begin{dfn}[Vector Space]
+	Given $\F$ a field and a set $\V$, where the \textit{sum} $+$ and the \textit{product with a scalar} $\cdot$ are defined on as
+	\begin{equation*}
+		\begin{aligned}
+			+:\V\times\V&\fto\V\\
+			\cdot:\F\times\V&\fto\V
+		\end{aligned}
+	\end{equation*}
+	The set $\V$ is known as a \textit{vector space} on $\F$ if given $u, v, w\in\V$ and $a, b\in\F$
+	\begin{enumerate}
+	\item $u+v\in\V$ sum closure
+	\item $av\in\V$ scalar closure
+	\item $u+v=v+u$
+	\item $(u+v)+w=u+(v+w)$
+	\item $\exists!0\in\V\st u+0=0+u=u$
+	\item $\exists!v\in\V\st u+v=0\implies{} v=-u$
+	\item $\exists!1\in\V\st 1\cdot u=u$
+	\item $(ab)u=a(bu)=b(au)=abu$
+	\item $(a+b)u=au+bu$
+	\item $a(u+v)=au+av$
+	\end{enumerate}
+	Note that with this definition, the set $\F^n$ is a vector field on $\F$ by definition
+\end{dfn}
+\begin{dfn}[Vector Subspace]
+	Given $\V$ a vector space over the field $\F$, a non empty subset $W\subset\V$ is a \textit{vector subspace} if
+	\begin{itemize}
+	\item Given $v_1, v_2\in W$, $v_1+v_2\in W$
+	\item Given $v\in W$, $a\in\F$, $a v\in W$
+	\end{itemize}
+\end{dfn}
+\begin{dfn}[Linear Combination]
+	Given a vector space $\V$ over a field $\F$, $v\in\V$ is a \textit{linear combination} of $v_i\in \V$ if $\exists a_i\in\F$ $1\le i\le n$ such that
+	\begin{equation*}
+		v=\sum_{i=1}^na_iv_i
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Linear Dependence]
+	Let $\V$ be a vector space over $\F$, and let $v_i\in\V$. They are \textit{linearly dependent} over $\F$ if $\exists a_i\in\F, i\in[1, n]$, $a_i\ne0\ \forall i\in[1, n]$ and
+	\begin{equation*}
+		\sum_{i=1}^{n}a_iv_i=0
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Span, Basis and Dimension]
+	Given a vector space $\V$, with $v_i\in\V$ generating $\V$ i.e.
+	\begin{equation*}
+		\span\left( v_i \right):=\left\{ v_i\in\V, \ a_i\in\F\st \sum_{i=1}^na_iv_i=v \right\}=B
+	\end{equation*}
+	Then the set $B\subset\V$ defines a \textit{basis} for the vector space.\\
+	The dimension of the space $\dime\left( \V \right)$ is defined as the cardinality of $B$
+\end{dfn}
+\begin{dfn}[Direct Sum]
+	Let $\V, \W$ be vector spaces over $\F$. Said $\Zv=\V+\W$ and $\V\cap\W=\left\{  \right\}$, $\Zv$ is said the \textit{direct sum} of $\V, \W$, indicated as
+	\begin{equation*}
+		\Zv=\V\oplus\W
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Dimensionality of Direct Sum Spaces]
+	Given a vector space $\Zv$ over $\F$, such that $\Zv=\V\oplus\W$, while $\dime\left( \Zv \right)<\infty$, then
+	\begin{equation*}
+		\dime\left( \Zv \right)=\dime\left( \V \right)+\dime\left( \W \right)
+	\end{equation*}
+\end{thm}
+\begin{dfn}[Direct Product]
+	Said $\V, \W$ two vector spaces over $\F$. The pair $(\Zv, +)=\V\times\W$ where $+$ is the sum operation defined as
+	\begin{equation*}
+		\begin{aligned}
+			+:\Zv\times\Zv&\fto\Zv\\
+			(v_1, w_1, v_2, w_2)&\longmapsto(v_1+v_2, w_1+w_2)
+		\end{aligned}
+	\end{equation*}
+	Then, $\Zv$ is known as the \textit{direct sum} of $\V$ and $\W$, defined as
+	\begin{equation*}
+		\Zv=\V\otimes\W
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Dimensionality of Direct Product Spaces]
+	Given a vector space $\Zv$ over $\F$, such that $\Zv=\V\otimes\W$, while $\dime\left( \Zv \right)<\infty$, then
+	\begin{equation*}
+		\dime\left( \Zv \right)=\dime\left( \V \right)+\dime\left( \W \right)
+	\end{equation*}
+\end{thm}
+\begin{dfn}[Norm]
+	Let $\V$ be a vector space over a field $\F$, then the \textit{norm} is an application defined as follows
+	\begin{equation*}
+		\norm{\cdot}:\V\fto\F
+	\end{equation*}
+	Where it satisfies the following properties
+	\begin{enumerate}
+	\item $\norm{u}\ge0\ \forall u\in\V$
+	\item $\norm{u}=0\iff u=0$
+	\item $\norm{cu}=\abs{c}\norm{u}\ \forall u\in\V\ c\in\F$
+	\item $\norm{u+v}\le\norm{u}+\norm{v}\ \forall u,v\in\V$
+	\end{enumerate}
+\end{dfn}
+\begin{dfn}[Normed Vector Space]
+	A \textit{normed vector space} is defined as a couple $(\V,\norm{\cdot})$, where $\V$ is a vector space over a field $\F$.
+\end{dfn}
+\begin{prop}
+	A normed vector space (NVS), is also a metric vector space (MVS) if we define our distance as follows
+	\begin{equation*}
+		d(u,v)=\norm{u-v}\ \forall u,v\in\V
+	\end{equation*}
+\end{prop}
+\begin{dfn}[Vector Subspace]
+	Let $\V$ be a vector space and $\Us\subset\V$. $\Us$ is a \textit{vector subspace} of $\V$ iff
+	\begin{enumerate}
+	\item $u,v\in\Us\implies{} u+v\in\Us$
+	\item $u\in\Us,\ a\in\F\implies{} au\in\Us$
+	\end{enumerate}
+\end{dfn}
+\begin{prop}
+	If $(\V,\norm{\cdot})$ is an normed vector space and $\W\subset\V$ is a subspace of $\V$, then $(\W,\norm{\cdot})$ is a normed vector space
+\end{prop}
+\begin{dfn}[p-norm]
+	Let $(\V,\norm{\cdot}_p)$ be a normed vector space. The norm $\norm{\cdot}_p$ is said to be a \textit{p-norm} if it's defined as follows
+	\begin{equation}
+		\norm{v}_p:=\left( \sum_{i=1}^{\dim(\V)}(v_i)^p \right)^{\frac{1}{p}},\ \forall v\in\V,\ \forall p\in\N^{\star}:=\N\cup\{\pm\infty\}
+		\label{eq:pnorm}
+	\end{equation}
+	Setting $p=\infty$ we have that
+	\begin{equation}
+		\norm{v}_{\infty}=\max_{i\le\dim(\V)}\abs{v_i}
+		\label{eq:inftynorm}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Dual Space]
+	Let $\V$ be a vector space over the field $\F$, we define a \textit{linear functional} as an application $\varphi:\V\fto\F$ such that $\forall u,v\in\V$ and $c\in\F$
+	\begin{equation}
+		\begin{aligned}
+			\varphi(u+v)&=\gamma(u)+\varphi(v)\\
+			\varphi(\lambda u)&=\lambda\varphi(u)
+		\end{aligned}
+		\label{eq:linearfunctional}
+	\end{equation}
+	Defining the sum of two linear functionals as $(\varphi_1+\varphi_2)(v)=\varphi_1(v)+\varphi_2(v)$ we immediately see that the set of all linear functionals forms a vector space over $\V$, which will be called the \textit{dual space} $\V^\star$.
+\end{dfn}
+
+\subsection{Hölder and Minkowski Inequalities}
+Having defined p-norms, we can prove two inequalities that work with these norms, the \textit{Minkowski inequality} and the \textit{Hölder Inequality}
+\begin{thm}[Hölder Inequality]
+	Let $p_q\in\N^\star$, where
+	\begin{equation*}
+		\frac{1}{p}+\frac{1}{q}=1
+	\end{equation*}
+	Then
+	\begin{equation}
+		\forall x,y\in\R^n\ \norm{x}_p\norm{y}_q\ge\sum_{k=1}^n\abs{x_ky_k}
+		\label{eq:holderineq}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taking $p=1$, we have $q=\infty$, and the demonstration is obvious
+	\begin{equation*}
+		\norm{x}_p\norm{y}_q=\norm{x}_1\norm{p}_\infty=\max_{k\le n}\abs{y_k}\sum_{k=1}^n\abs{x_k}\ge\sum_{k=1}^n\abs{x_ky_k}
+	\end{equation*}
+	Else, if $p>1$, we ave that
+	\begin{equation*}
+		ab\le\frac{a^p}{p}+\frac{b^q}{q}\ \forall a,b\ge0
+	\end{equation*}
+	Let
+	\begin{equation*}
+		s=\frac{x}{\norm{x}_p},\ t=\frac{y}{\norm{y}_q}
+	\end{equation*}
+	We have
+	\begin{equation*}
+		\sum_{k=1}^n\norm{s}^p=\frac{1}{\norm{x}_p^p}\sum_{k=1}^n\abs{x_k}^p=1=\sum_{k=1}^n\abs{t}^q=\frac{1}{\norm{y}_q^q}\sum_{k=1}^n\abs{y}^p
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\sum_{k=1}^n\abs{s_kt_k}\le\frac{1}{p}\sum_{k=1}^n\abs{s_k}^p+\frac{1}{q}\sum_{k=1}^n\abs{t_k}^q
+	\end{equation*}
+	Substituting again the definitions of $s,t$ we have
+	\begin{equation*}
+		\sum_{i=1}^n\abs{y_kx_k}=\norm{x}_p\norm{y}_q\sum_{k=1}^n\abs{s_kt_k}\le\norm{x}_p\norm{y}_q
+	\end{equation*}
+\end{proof}
+\begin{thm}[Minkowski Inequality]
+	Let $p\ge1$, therefore $\forall x,y\in\R^n$ we have
+	\begin{equation}
+		\norm{x+y}_p\le\norm{x}_p+\norm{y}_p
+		\label{eq:minkowskiineq}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	We begin by writing explicitly the p-norm
+	\begin{equation*}
+		\norm{x+y}_p^p=\sum_{k=1}^n\left( \abs{x_k}+\abs{y_k} \right)^p=\sum_{k=1}^n\left( \abs{x_k}+\abs{y}_k \right)\left( \abs{x_k}+\abs{y_k} \right)^{p-1}
+	\end{equation*}
+	Letting $u_k=\left( \abs{x_k}+\abs{y_k} \right)^{p-1}$ we have, after imposing the condition on $q$ of the p-norm as $q(p+1)=p$ and using that the sum is Abelian, we have
+	\begin{equation*}
+		\left\{\begin{aligned}
+				\sum_{k=1}^n\abs{x_k}u_k&\le\norm{x}_p\norm{u}_q=\norm{x}_p\left(\sum_{k=1}^n(\abs{x_k}+\abs{y_k})^p\right)^{\frac{1}{q}}\\
+				\sum_{k=1}^n\abs{y_k}u_k&\le\norm{y}_p\norm{u}_q=\norm{y}_p\left( \sum_{k=1}^n\left( \abs{x_k}+\abs{y_k} \right)^p \right)^{\frac{1}{q}}
+		\end{aligned}\right.
+	\end{equation*}
+	Therefore, summing and imposing that $1-q^{-1}=p$ we have that
+	\begin{equation*}
+		\norm{x+y}_p\le\norm{x}_p+\norm{y}_q
+	\end{equation*}
+\end{proof}
+%\subsection{Topology of Normed Vector Spaces}
+%\begin{dfn}[Convergence]
+%	Let $(\V,\norm{\cdot})$ be a normed vector space, and $(v_n)_{n\ge0}\in\V$ a sequence. The sequence converges to the point $v\in\V$ iff
+%	\begin{equation*}
+%		v_n\fto v\in\V\iff\forall\epsilon>0\ \exists N\in\N\st\forall n\ge N\norm{v_n-v}<\epsilon
+%	\end{equation*}
+%	Similarly to metric spaces, if a sequence converges, it's a Cauchy sequence
+\subsection{Sequence Spaces}
+\begin{dfn}[Banach Space]
+	Given a space and a norm $(X,\norm{\cdot})$, the space is said to be a \textit{Banach space} if it's complete with respect to the norm $\norm{\cdot}$.\\
+	I.e. remembering the definition of completeness, we have that $\forall(x)_k\in X$ Cauchy sequence, $x_k\to x\in X$
+\end{dfn}
+%\begin{eg}
+%	Example of Banach spaces are the following
+%	\begin{enumerate}
+%	\item $(\ell^\infty,\inorm{\cdot})$
+%	\item $(\ell^p,\pnorm{\cdot}),\ p\ge1$
+%	\item $(\ell_0,\inorm{\cdot})$
+%	\item $(C_b(\R),\unorm{\cdot})$
+%	\end{enumerate}
+%	All the not listed spaces are not complete with respect to $p-$norms or uniform norms
+%\end{eg}
+\begin{ntn}[The Field $\F$]
+	Here in this section, the field $\F$ should be intended as either the field of real numbers $\R$ or the field of complex numbers $\Cf$
+\end{ntn}
+\begin{dfn}[Sequence Space]
+	As a $n$-tuple in the field $\F^n$ can be seen as a sequence, as follows
+	\begin{equation*}
+		x\in\F^n,\ x=(x_1,x_2,\cdots,x_n)=(x_k)_{k=1}^n
+	\end{equation*}
+	We can imagine a sequence as a point in a space. We will call this space $\F^{\N}$, and an element of this space will be indicated as follows
+	\begin{equation*}
+		x\in\F^{\N},\ x=(x)_n=(x_1,x_2,\cdots,x_n,\cdots)=(x_k)_{k=1}^\infty
+	\end{equation*}
+	Therefore, every point in $\F^{\N}$ is a sequence. Note that the infinite sequence of $0$s and $1$s will be indicated as $0=(0)_n,\ 1=(1)_n$
+\end{dfn}
+\begin{dfn}[Sequence of Sequences]
+	We can see a sequence of sequences as a mapping from $\N$ to the space $\F^{\N}$, as follows
+	\begin{equation*}
+		\begin{aligned}
+			x:&\N\fto\F^{\N}\\
+			&n\to((x)_k)_n
+		\end{aligned}
+	\end{equation*}
+	It's important to note how there are two indexes, since every element of the sequence is a sequence in itself (i.e. $((x)_k)_n\in\F^{\N}$ for any fixed $n\in\N$)
+\end{dfn}
+\begin{dfn}[Convergence of a Sequence of Sequences]
+	A sequence of sequences is said to converge to a sequence in $\F^{\N}$ if and only if
+	\begin{equation}
+		\lim_{n\to\infty}\norm{(x)_k-((x)_k)_n}=0
+		\label{eq:seqseqconv}
+	\end{equation}
+	For some norm $\norm{\cdot}$
+\end{dfn}
+\begin{dfn}[Pointwise Convergence]
+	A sequence of sequence is said to converge \textit{pointwise} to a sequence in $\F^{\N}$ if and only if
+	\begin{equation}
+		\forall k\in\N\ \lim_{n\to\infty}((x)_k)_n=(x)_k
+		\label{eq:pointwiseconvseqseq}
+	\end{equation}
+	And it's indicated as $((x)_k)_n\to(x)_k$
+\end{dfn}
+\begin{eg}
+	Take the following sequence of sequences in $\F^{\N}$
+	\begin{equation*}
+		\seqseq{x}{k}{n}=\frac{k}{n}
+	\end{equation*}
+	This sequence converges pointwise to the null sequence, since
+	\begin{equation*}
+		\lim_{n\to\infty}\seqseq{x}{k}{n}=\lim_{n\to\infty}\frac{k}{n}=(0)_k
+	\end{equation*}
+\end{eg}
+\subsubsection{Space of Bounded Sequences}
+\begin{dfn}[Limited Sequence Space]
+	Let $(x)_k\in\F^{\N}$. Calling the space of bounded sequences as $\ell^\infty(\F)$, we have that $(x)_k\in\ell^\infty(\F)$ if and only if
+	\begin{equation}
+		\sup_{n\in\N}\abs{(x)_n}=M\in\F
+		\label{eq:boundedseq}
+	\end{equation}
+	Therefore, this space is defined as follows
+	\begin{equation}
+		\ell^\infty(\F):=\{\derin{(x)_n\in\F^{\N}}\sup_{n\in\N}\abs{(x)_n}<M,\ M\in\F\}
+		\label{eq:ellinf}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	The application $\norm{\cdot}_{\infty}=\sup_{n\in\N}\abs{\cdot}$ is a norm in $\ell^\infty(\F)$
+\end{thm}
+\begin{proof}
+	1) $\norm{(x)_n}\ge0\ \forall(x)_n\in\F^{\N},\ \norm{(x)_n}_{\infty}=0\iff(x)_n=(0)_n$, by definition of $\sup$ the first statement is obvious, meanwhile for the second
+	\begin{equation*}
+		0\le\abs{(x)_n}\le\sup_{n\in\N}\abs{(x)_{n}}=0\implies{}\abs{(x)_n}=0\ \therefore(x)_n=(0)_n
+	\end{equation*}
+	2) $\norm{c(x)_n}_{\infty}=\abs{c}\norm{(x)_n}_{\infty}$
+	\begin{equation*}
+		\norm{c(x)_n}_{\infty}=\sup_{n\in\N}\abs{c(x)_n}=\sup_{n\in\N}\abs{c}\abs{(x)_n}=\abs{c}\sup_{n\in\N}\abs{(x)_n}=\abs{c}\norm{(x)_n}_{\infty}
+	\end{equation*}
+	3) $\norm{(x)_n+(y)_n}_{\infty}\le\norm{(x)_n}_\infty+\norm{(y)_n}_\infty$
+	\begin{equation*}
+		\sup_{n\in\N}\abs{(x)_n+(y)_n}\le\sup_{n\in\N}\left( \abs{(x)_n}+\abs{(y)_n} \right)=\sup_{n\in\N}\abs{(x)_n}+\sup_{n\in\N}\abs{(y)_n}=\norm{(x)_n}_\infty+\norm{(y)_n}_\infty
+	\end{equation*}
+	Since $\ell^\infty(\F)$ is a vector space, the couple $(\ell^\infty(\F),\norm{\cdot}_{\infty})$ is a normed vector space
+\end{proof}
+\begin{rmk}
+	Let $\mathcal{V}$ be a vector space over some field $\F$. If $\dim(\mathcal{V})=\infty$, a closed and bounded subset $\mathcal{W}\subset\mathcal{V}$ isn't necessarily compact, whereas, a compact subset $\mathcal{Z}\subset\mathcal{V}$ is necessarily closed and bounded.
+\end{rmk}
+\begin{eg}
+	Take $\mathcal{V}=\ell^\infty(\F)$ and $\mathcal{W}=\cc{B_1( (0)_n )}$, where $$\cc{B_1( (0)_n )}:=\{\derin{(x)_n\in\F^\infty}\norm{(x)_n}_\infty\le1\}$$
+	We have that $\diam(\cc{B_1})=2$, therefore this set is bounded and closed by definition.\\
+	Take the \textit{canonical sequence of sequences} $\seqseq{e}{k}{n}$, defined as follows:
+	\begin{equation*}
+		\seqseq{e}{k}{n}=((0)_k,(0)_k,\cdots,(0)_k,(1)_k,(0)_k,\cdots),\ \text{for some}\ k\in\N
+	\end{equation*}
+	Therefore, $\forall n\ne m$
+	\begin{equation*}
+		\norm{\seqseq{e}{k}{n}-\seqseq{e}{k}{m}}_{\infty}=\norm{(1)_k}_\infty=1
+	\end{equation*}
+	Therefore there aren't converging subsequences, and therefore $\cc{B_1}$ can't be compact.
+\end{eg}
+\subsubsection{Space of Sequences Converging to 0}
+\begin{dfn}[Space of Sequences Converging to $0$]
+	The space of sequences converging to $0$ is indicated as $\ell_0(\F)$ and is defined as follows
+	\begin{equation}
+		\ell_0(\F):=\{\derin{(x)_n\in\F^{\N}}(x)_n\to0\}
+		\label{eq:ellnot}
+	\end{equation}
+\end{dfn}
+\begin{prop}
+	$\ell_0(\F)\subset\ell^\infty(\F)$, and the couple $(\ell_0(\F),\inorm{\cdot})$ is a normed vector space, where the norm $\inorm{\cdot}$ gets induced from the space $\ell^\infty(\F)$
+\end{prop}
+\begin{proof}
+	\begin{equation*}
+		\begin{aligned}
+			&\lim_{k\to\infty}(x)_k=0\implies{}\forall\epsilon>0\ \exists N\in\N\st\abs{(x)_n}<\epsilon\ \forall n\ge N\\
+			&\therefore\sup_{n\in\N}\abs{(x)_n}=\epsilon\le M\in\F\implies{}(x)_n\in\ell^\infty(\F),\ \therefore\ell_0(\F)\subset\ell^\infty(\F)
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\subsubsection{$\ell^p(\F)$ Spaces}
+\begin{dfn}
+	The sequence space $\ell^p(\F)$ is defined as follows
+	\begin{equation}
+		\ell^p(\F):=\{\derin{(x)_n\in\F^{\N}}\pnorm{(x)_n}^p=M\in\F\}
+		\label{eq:ellpspace}
+	\end{equation}
+	Where $\pnorm{\cdot}$ is the usual $p-$norm
+\end{dfn}
+\begin{prop}
+	The application $\pnorm{\cdot}:\ell^p(\F)\fto\F$ is a norm in $\ell^p(\F)$, and the couple $(\ell^p(\F),\pnorm{\cdot})$ is a normed vector space
+\end{prop}
+\begin{proof}
+	We begin by proving that $\ell^p(\F)$ is actually a vector space, therefore
+	1) $\forall(x)_n,(y)_n\in\ell^p(\F),\ (x)_n+(y)_n=(x+y)_n\in\ell^p(\F)$
+	\begin{equation*}
+		\begin{aligned}
+			&(x+y)_n\in\ell^p(\F)\implies{}\sum_{n=0}^\infty\abs{(x)_n+(y)_n}^p=\pnorm{(x)_n+(y)_n}^p<M\in\F\\
+			&\pnorm{(x)_n+(y)_n}^p\le\pnorm{(x)_n}^p+\pnorm{(y)_n}^p<M\in\F
+		\end{aligned}
+	\end{equation*}
+	2) $\forall(x)_n\in\ell^p(\F),\ c\in\F,\ c(x)_n\in\ell^p(\F)$
+	\begin{equation*}
+		\begin{aligned}
+			&c(x)_n\in\ell^p(\F)\implies{}\pnorm{c(x)_n}^p<M\in\F\\
+			&\pnorm{c(x)_n}^p=\sum_{n=0}^\infty\abs{c(x)_n}^p=\abs{c}^p\sum_{n=0}^\infty\abs{(x)_n}^p=\abs{c}^p\pnorm{(x)_n}^p<M\in\F
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{rmk}
+	$(x)_n\in\ell^p(\F)\implies{}(x)_n\in\ell_0(\F)$.
+\end{rmk}
+\begin{proof}
+	The proof is simple, taking $(y)_n=\abs{(x)_n}^p$, we can see that $(y)_n\to0$, therefore $(x)_n\to0$ and $(x)_n\in\ell_0(\F)$
+\end{proof}
+\subsubsection{Space of Finite Sequences}
+\begin{dfn}[Space of Finite Sequences]
+	The space of finite sequences is indicated as $\ell_f(\F)$ and it's defined as follows
+	\begin{equation}
+		\ell_f(\F):=\{\derin{(x)_n\in\F^{\N}}(x)_n=0\ \forall n>N\in\N\}
+		\label{eq:ellf}
+	\end{equation}
+	It's already obvious that $\ell_f(\F)\subset\ell^p(\F)\subset\ell^q(\F)\subset\ell_0(\F)\subset\ell^\infty(\F)$, where $p<q\in\R^+\setminus\{0\}$ where $p<q\in\R^+\setminus\{0\}$
+\end{dfn}
+\subsection{Function Spaces}
+\begin{ntn}
+	In this case, when there will be written the field $\F$, we might either mean $\R$ only, i.e. functions $\R\fto\R$, or $\R;\Cf$, i.e. functions $\R\fto\Cf$.
+\end{ntn}
+\begin{dfn}[Some Function Spaces]
+	We are already familiar from the basic courses in one dimensional real analysis, about the space of continuous functions $C(A)$, where $A\subset\R$. We can define three other spaces directly, adding some restrictions.
+	\begin{enumerate}
+	\item $C_b(\F):=\{\derin{f\in C(\F)}\sup_{x\in\F}(f(x))\le M\in\F\}$
+	\item $C_0(\F):=\{\derin{f\in C(\F)}\lim_{x\to\infty}(f(x))=0\}$
+	\item $C_c(\F):=\{\derin{f\in C(\F)}f(x)=0\quad\forall x\in\comp{A}\subset\F\}$ i.e. $C_c(\F):=\{\derin{f\in C(\F)}\supp{(f)}\text{ is compact }\}$, where with $\supp$ we indicate the following set $\supp_{\F}(f):=\cc{\{\derin{x\in\F}f(x)\ne 0\}}$
+	\end{enumerate}
+\end{dfn}
+Due to the properties of continuous functions, these spaces are obviously vector spaces.
+\begin{prop}
+	We have $C_c(\F)\subset C_0(\F)\subset C_b(\F)\subset C(\F)$, the application
+	\begin{equation}
+		\unorm{f}=\inorm{f}=\sup_{x\in A}\abs{f(x)}
+		\label{eq:unormf}
+	\end{equation}
+	Is a norm in $C(A)$, whereas
+	\begin{equation}
+		\unorm{f}=\inorm{f}=\sup_{x\in\F}\abs{f(x)}
+		\label{eq:unormf2}
+	\end{equation}
+	Is a norm in the other three spaces
+\end{prop}
+\begin{proof}
+	The inclusion of these spaces is obvious, due to the definition of these. For the proof that the application $\unorm{\cdot}$ is a norm, it's immediately given from the proof that the application $\inorm{\cdot}$ is a norm in $\ell^\infty(\F)$, and that $\unorm{\cdot}=\inorm{\cdot}$
+\end{proof}
+\begin{rmk}
+	Take $f_n\in C_b(\F)$ a sequence of functions. The uniform convergence of this sequence means that $f_n\to f$ in the norm $\unorm{\cdot}=\inorm{\cdot}$
+\end{rmk}
+\begin{prop}
+	If $f\in C_0(\F)$, then $f$ is uniformly continuous
+\end{prop}
+\begin{proof}
+	Let $f\in C_0(\F)$, then
+	\begin{equation*}
+		\forall\epsilon>0\ \exists l\st \abs{x}\ge l\implies{}\abs{f(x)}<\frac{\epsilon}{2}
+	\end{equation*}
+	Since every continuous function is uniformly continuous in a closed set, then
+	\begin{equation*}
+		\forall\epsilon>0\ \exists\delta\st\forall x,y\in[-L-1,L+1]\wedge\abs{x-y}<\delta\implies{}\abs{f(x)-f(y)}<\epsilon
+	\end{equation*}
+	Hence we can have two cases. We either have $\abs{x-y}<\delta$ or $x,y\in[-L-1,L+1]$. Hence we have, in the first case
+	\begin{equation*}
+		\abs{f(x)-f(y)}\le\abs{f(x)}+\abs{f(y)}<\epsilon
+	\end{equation*}
+	Or, in the second case
+	\begin{equation*}
+		\forall\epsilon>0\ \exists\delta>0\st\abs{x-y}<\delta\implies{}\abs{f(x)-f(y)}<\epsilon
+	\end{equation*}
+	Demonstrating our assumption
+\end{proof}
+\subsubsection{$C_p(\F)$ spaces}
+\begin{dfn}
+	We can define a set of function spaces analogous to the $\ell^p(\F)$ spaces. These spaces are the $C_p(\F)$ spaces. We define analogously the $p-$norm for functions as follows
+	\begin{equation}
+		\pnorm{f}:=\sqrt[p]{\int_{\F}\abs{f(x)}^p\diff{x}}
+		\label{eq:funpnorm}
+	\end{equation}
+	Thanks to what said about $\ell^p(\F)$ spaces and $p-$norms, it's already obvious that these spaces are normed vector spaces
+\end{dfn}
+\begin{rmk}
+	Watch out! $C_p(\F)\not\subset C_0(\F)$, and $C_p(\F)\not\subset C_q(\F)$ for $1\le p\le q$. It's easy to find counterexamples
+\end{rmk}
+\begin{prop}
+	If $1\le p\le q$, then
+	\begin{equation*}
+		C_p(\F)\cap C_b(\F)\subset C_q(\F)
+	\end{equation*}
+\end{prop}
+\begin{proof}
+	Let $f\in C_p(\F)\cap C_b(\F)$. Therefore $\sup_{x\in\F}\abs{f(x)}<M\in\F$, then
+	\begin{equation*}
+		\int_{\F}\abs{f(x)}^q\diff{x}=\int_{\F}^{}\abs{f(x)}^p\abs{f(x)}^{q-p}\diff{x}\le M^{q-p}\int_{\F}\abs{f(x)}^p\diff{x}\le\infty
+	\end{equation*}
+	Therefore $f\in C_p(\F)\cap C_b(\F)\implies{} f\in C_q(\F)$
+\end{proof}
+\subsection{Function Spaces in $\R^n$}
+\begin{dfn}[Seminorm]
+	A \textit{seminorm} is an application $\norm{\cdot}_{\alpha,\beta}:A\fto\F$ with $A$ a function space and $\alpha,\beta$ multiindices, where
+	\begin{equation}
+		\norm{f}_{\alpha,\beta}:=\inorm{x^\alpha\del^\beta f}=\sup_{x\in\F}\abs{x^\alpha\del^\beta f(x)}
+		\label{eq:seminorm}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Schwartz Space]
+	The space $\mathcal{S}(\R^n)$ is called the \textit{Schwartz space}, and it's defined as follows
+	\begin{equation}
+		\mathcal{S}(\R^n):=\left\{ \derin{f\in C^\infty(\R^n)}\norm{f}_{\alpha,\beta}<\infty, \alpha,\beta\text{ multiindices} \right\}
+		\label{eq:schwartzspace}
+	\end{equation}
+\end{dfn}
+\begin{eg}
+	Taken $p(x)\in\R[x]$ a polynomial, a common example of functions $f(x)\in\mathcal{S}(\R)$ is the following.
+	\begin{equation}
+		f(x)=p(x)e^{-a\abs{x}^{2n}}
+		\label{eq:schwartzfunc}
+	\end{equation}
+	With $a>0,\ n\in\N$
+\end{eg}
+\begin{thm}
+	A function $f\in C^\infty(\R^n)$ is in $\mathcal{S}(\R^n)$ if $\forall\beta$ multiindex, $\forall a>0\ \exists C_{\alpha,\beta}$ such that
+	\begin{equation}
+		\norm{\del^\beta f(x)}\le\frac{C_{\alpha,\beta}}{\left( 1+\norm{x}^2 \right)^{\frac{a}{2}}}\quad\forall x\in\R^n
+		\label{eq:schwartzfunc2}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $n=1$ and $f\in C^\infty(\R)$, then
+	\begin{equation*}
+		\abs{x^j\del^kf(x)}=\abs{x}^j\abs{\del^kf(x)}\le\frac{C_{j,k}\abs{x}^j}{(1+x^2)^{\frac{j}{2}}}\le C_{j,k}\quad\forall x\in\R
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\norm{f}_{j,k}\le C_{j,k}<\infty\implies{} f\in\mathcal{S}(\R)
+	\end{equation*}
+	Taken $f\in{S}(\R)$ we have that, if $\abs{x}\ge1$
+	\begin{equation*}
+		(1+x^2)^{\frac{a}{2}}\le 2^{\frac{a}{2}}\abs{x}^a
+	\end{equation*}
+	Taken $j=\lceil a\rceil$
+	\begin{equation*}
+		\abs{\del^kf(x)}=\frac{\abs{x^j\del^kf(x)}}{\abs{x}^j}\le\frac{\norm{f}_{j,k}}{\abs{x}^a}\le\frac{2^{\frac{a}{2}}\norm{f}_{j,k}}{(1+x^2)^{\frac{a}{2}}}\le\frac{2^{\frac{a}{2}}\norm{f}_{0,k}}{(1+x^2)^{\frac{a}{2}}}\quad\abs{x}<1
+	\end{equation*}
+	Taken $C_{j,k}=2^{\frac{a}{2}}\max{\norm{f}_{\lceil a\rceil,k},\norm{f}_{0,k}}$ the assertion is demonstrated
+\end{proof}
+\begin{dfn}[Space of Compact Support Function]
+	Given a function with compact support $f$, we define the space of compact functions $C_c^{\infty}(\R^n)$ as the space of all such functions.\\
+	We have obviously that $C_c^\infty(\R^n)\subset\mathcal{S}(\R^n)$
+\end{dfn}
+\begin{thm}
+	Both $C_c^\infty(\R^n)$ and $\mathcal{S}(\R^n)$ are dense in $(C_p(\R^n),\pnorm{\cdot})$
+\end{thm}
+\begin{thm}[Other Function Spaces]
+	\begin{enumerate}
+	\item $C(\R)$ Space of continuous functions
+	\item $\R[x]$ Space of real polynomials
+	\item $C^k(\R)$ Space of continuous $k-$derivable functions
+	\item $C^k_c(\R)$ Space of functions $f\in C^k(\R)$ with compact support
+	\item $C^\infty(\R)$ Space of infinitely differentiable (smooth) functions
+	\item $C_0(\R)$ Space of smooth functions with $\lim_{x\to\pm\infty}f(x)=0$
+	\item $C_c^\infty(\R)$ Space of smooth functions with compact support
+	\end{enumerate}
+	We have the obvious inclusions
+	\begin{equation*}
+		\begin{aligned}
+			\ell_f&\subset\ell^p\subset\cdots\subset\ell_0\subset\R^{\N}\\
+			C_c(\R)&\subset C_0(\R)\subset\cdots\subset C_p(\R)\subset C(\R)\\
+			\R[x]&\subset C^\infty(\R)\subset\cdots\subset C(\R)\\
+			C_c^\infty(\R)&\subset C_0^\infty(\R)\subset C^\infty(\R)
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\section{Euclidean Spaces and Hilbert Spaces}
+\begin{dfn}[Hermitian Product]
+	Given $\V$ a complex vector space, and an application $\spr{\cdot}{\cdot}:\V\fto\Cf$ such that $\forall u,v,z\in\V,\ c,d\in\Cf$
+	\begin{enumerate}
+	\item $\spr{v}{v}\ge0$
+	\item $\spr{v}{v}=0\iff v=0$
+	\item $\spr{u}{v}=\cc{\spr{v}{u}}$
+	\item $\spr{u+v}{z}=\spr{u}{z}+\spr{v}{z}$
+	\item $\spr{cu}{dv}=c\cc{d}\spr{u}{v}$
+	\end{enumerate}
+	The application $\spr{\cdot}{\cdot}$ is called an \textit{Hermitian product} in $\V$, and the couple $(\V,\spr{\cdot}{\cdot})$ is called an \textit{Euclidean space}
+\end{dfn}
+\begin{rmk}
+	It's usual in physics that for a Hermitian product, we have that
+	\begin{equation}
+		\spr{cu}{v}=\cc{c}\spr{u}{v}
+		\label{eq:physicshermprod}
+	\end{equation}
+\end{rmk}
+\begin{dfn}[Hilbert Space]
+	Given $(\V,\spr{\cdot}{\cdot})$ an euclidean space. It's said to be a \textit{Hilbert space} if it's complete
+\end{dfn}
+\begin{thm}[Cauchy-Schwartz Inequality]
+	Given $(\V,\spr{\cdot}{\cdot})$ a complex euclidean space, then $\forall u,v\in\V$
+	\begin{equation}
+		\norm{\spr{u}{v}}^2\le\spr{u}{u}\spr{v}{v}
+		\label{eq:cauchyschwartzineq}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $t\in\Cf$, we define $p(t)=\spr{tu+v}{tu+v}$. Then by definition of the Hermitian product, we have
+	\begin{equation*}
+		p(t)=\norm{t}^2\spr{u}{u}+t\spr{u}{v}+\cc{t}\spr{v}{u}+\spr{v}{v}
+	\end{equation*}
+	Writing $\spr{u}{v}=\rho e^{i\theta},\ t=se^{-i\theta}$ we have
+	\begin{equation*}
+		p(se^{-i\theta})=s^2\spr{u}{u}+2s\rho+\spr{v}{v}\ge0\quad\forall s\in\R
+	\end{equation*}
+	Then, by definition, we have
+	\begin{equation*}
+		\rho^2=\norm{\spr{u}{v}}^2\le\spr{u}{u}\spr{v}{v}
+	\end{equation*}
+\end{proof}
+\begin{thm}[Induced Norm]
+	Given a Hermitian product $\spr{\cdot}{\cdot}$ we can define an induced norm $\norm{\cdot}$ by the definition
+	\begin{equation}
+		\norm{\cdot}=\sqrt{\spr{\cdot}{\cdot}}
+		\label{eq:indnorm}
+	\end{equation}
+\end{thm}
+\begin{thm}
+	Addition, multiplication by a scalar and the scalar product are continuous in an euclidean space $\V$, then, given two sequences $u_n\fto u\in\V,\ v_n\to v\in\V$ and
+	\begin{equation*}
+		\begin{aligned}
+			u_n+v_n&\fto u+v\\
+			c\in\Cf\implies{} cu_n&\fto u\\
+			\spr{u_n}{v_n}&\fto\spr{u}{v}
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Thanks to Cauchy-Schwartz we have
+	\begin{equation*}
+		\begin{aligned}
+			\abs{\spr{u}{v}-\spr{u_n}{v_n}}&=\abs{\spr{u}{v}-\spr{u}{v_n}+\spr{u}{v_n}-\spr{u_n}{v_n}}\le\abs{\spr{u}{v}-\spr{u}{v_n}}+\abs{\spr{u}{v_n}-\spr{u_n}{v_n}}=\\
+			&=\norm{u}\norm{v-v_n}+\norm{v_n}\norm{u-u_n}
+		\end{aligned}
+	\end{equation*}
+	Since the successions are convergent, we have that $\exists M>0\st\norm{v_n}\le M\ \forall n\in\N$, therefore
+	\begin{equation*}
+		\abs{\spr{u}{v}-\spr{u_n}{v_n}}\le\max\{\norm{u},M\}\left( \norm{v-v_n}+\norm{u-u_n} \right)\to0
+	\end{equation*}
+\end{proof}
+\begin{eg}[Some Euclidean Spaces]
+	1) $\ell^2(\Cf)$\\
+	Given $x,y\in\ell^2(\Cf)$ we define the scalar product as
+	\begin{equation*}
+		\spr{x}{y}=\sum_{i=1}^\infty x_i\cc{y_i}
+	\end{equation*}
+	2) $\ell^2(\mu)$, a weighted sequence space, where
+	\begin{equation*}
+		\ell^2(\mu):=\left\{ \derin{x\in\Cf^{\N}}\sum_{i=1}^\infty\mu_i\abs{x_i}^2<\infty,\ \mu_i\in\R,\ \mu_i>0\ \forall i \right\}
+	\end{equation*}
+	Given $x,y\in\ell^2(\mu)$ we define
+	\begin{equation*}
+		\spr{x}{y}=\sum_{i=1}^\infty\mu_ix_i\cc{y_i}
+	\end{equation*}
+	3) $C_2(\Cf)$
+	Given $f,g\in C_2(\Cf)$ we define
+	\begin{equation*}
+		\spr{f}{g}=\int_{\R} f(x)\cc{g(x)}\diff x
+	\end{equation*}
+	4) $C_2(\Cf,p(x)\diff x)$, weighted function spaces, where
+	\begin{equation*}
+		C_2(\Cf,p(x)\diff x):=\left\{ \derin{f\in C(\Cf)}\int_{\R} f(x)\cc{f(x)}p(x)\diff x<\infty,\ p(x)\in C(\R;\R^+) \right\}
+	\end{equation*}
+	Given $f,g\in C_2(\Cf,p(x)\diff x)$ we define
+	\begin{equation*}
+		\spr{f}{g}=\int_{\R} f(x)\cc{g(x)}p(x)\diff x
+	\end{equation*}
+	The spaces $C_2$ \emph{aren't complete} therefore they're not Hilbert spaces. The spaces $L^2(\Cf)$ and the weighted alternative are the completion of such spaces and are therefore Hilbert spaces
+\end{eg}
+\begin{thm}[Polarization Identity]
+	Given a complex euclidean space $(\V,\spr{\cdot}{\cdot})$ we have, $\forall u,v\in\V$
+	\begin{equation}
+		\spr{u}{v}=\frac{1}{4}\left( \norm{u+v}^2-\norm{u-v}^2+i\left( \norm{u+iv}^2\norm{u-iv}^2 \right) \right)
+		\label{eq:polarizationid}
+	\end{equation}
+\end{thm}
+\begin{thm}[Parallelogram Rule]
+	Let $(\V,\norm{\cdot})$ be a normed vector space. A necessary and sufficient condition that the norm is induced by a scalar product is that
+	\begin{equation}
+		\norm{u+v}^2+\norm{u-v}^2=2\left( \norm{u}^2+\norm{v}^2 \right)\quad\forall u,v\in\V
+		\label{eq:parallelogramrule}
+	\end{equation}
+\end{thm}
+\subsection{Orthogonality}
+\begin{dfn}[Angle]
+	Given a real euclidean space $(\V,\spr{\cdot}{\cdot})$ we define the angle $\theta=u\angle v$ as follows
+	\begin{equation}
+		\theta=\arccos\left( \frac{\spr{u}{v}}{\norm{u}\norm{v}} \right)
+		\label{eq:anglebwvec}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Orthogonal Complement]
+	Given an euclidean vector space $\V$ and two vectors $u,v$, we say that the two vectors are orthogonal $u\perp v$ if
+	\begin{equation}
+		\spr{u}{v}=0
+		\label{eq:orthvec}
+	\end{equation}
+	If $X\subset\V$ and $\forall x\in X$ we have that
+	\begin{equation*}
+		\spr{u}{x}=0
+	\end{equation*}
+	We say that $u\in X^{\perp}$ where this space is called the \textit{Orthogonal Complement} of $X$, i.e.
+	\begin{equation}
+		X^\perp:=\left\{ \derin{v\in\V}\spr{v}{w}=0\ \forall w\in X \right\}
+		\label{eq:xbot}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Given $X\subset\V$ with $\V$ an euclidean space, the set $X^\perp$ is a closed subspace of $\V$
+\end{thm}
+\begin{proof}
+	$X^\perp$ is a subspace, hence $\forall v_1,v_2\in X^\perp$ and $c_1,c_2\in\Cf$ we have
+	\begin{equation*}
+		\spr{c_1v_1+c_2v_2}{w}=c_1\spr{v_1}{w}+c_2\spr{v_2}{w}\quad\forall w\in X
+	\end{equation*}
+	Hence $c_1v_1+c_2v_2\in X^\perp$.\\
+	Given a sequence $(v)_n\in X^{\perp}\st(v)_n\fto v\in\V$ we have, given $w\in X$
+	\begin{equation*}
+		\spr{v_n}{w}=0\quad\forall n\in\N
+	\end{equation*}
+	Due to the continuity of the scalar product we have that
+	\begin{equation*}
+		\lim_{n\to\infty}\spr{v_n}{w}=0=\spr{v}{w}
+	\end{equation*}
+	Therefore $v\in X^\perp$ and the subspace $X^\perp$ is closed in $\V$
+\end{proof}
+\begin{thm}
+	Given $X,Y\subset\V$ with $\V$ an euclidean space, we have
+	\begin{equation*}
+		\begin{aligned}
+			X\subset Y&\implies{} Y^\perp\subset X^\perp\\
+			X^\perp&=(\cc{X})^\perp=\left( \cc{\span(X)} \right)^\perp
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken $v\in Y^\perp$ we have by definition
+	\begin{equation*}
+		\spr{v}{y}=0\quad\forall y\in Y
+	\end{equation*}
+	Since $X\subset Y$ we have then
+	\begin{equation*}
+		\spr{v}{x}=0\quad\forall x\in X
+	\end{equation*}
+	Therefore $Y^\perp\subset X^\perp$.\\
+	By definition we have that $X\subset\cc{X}\subset\cc{\span(X)}$, and thanks to the previous proof
+	\begin{equation*}
+		X^\perp\supset (\cc{X})^\perp\supset(\cc{\span(X)})^\perp
+	\end{equation*}
+	Taken $w\in\span(X)$ we have
+	\begin{equation*}
+		w=\sum_ic_iw_i\quad w_i\in X
+	\end{equation*}
+	And given $v\in X^\perp$, we get
+	\begin{equation*}
+		\spr{v}{w}=\sum_ic_i\spr{v}{w_i}=0
+	\end{equation*}
+	Now take $w\in\cc{\span(X)}$. Take a sequence $(w)_n\in\cc{\span(X)}$ such that $(w)_n\fto w$. Thanks to the continuity of the scalar product we have
+	\begin{equation*}
+		\spr{v}{w}=\spr{v}{\lim_{n\to\infty}w_n}=\lim_{n\to\infty}\spr{v}{w_n}=0
+	\end{equation*}
+	Demonstrating that $X^\perp=(\cc{\span(X)})^\perp$
+\end{proof}
+\begin{lem}
+	Let $\V$ be a Hilbert space. Given $\W\subset\V$ a closed subspace. Given $v\in\V$
+	\begin{equation*}
+		\exists!w_0\in\W\st\forall w\in\W\ d=\norm{v-w_0}\le\norm{v-w}
+	\end{equation*}
+\end{lem}
+\begin{proof}
+	Take $d=\inf_{w\in\W}\norm{v-w}$. By definition of infimum we have that $\exists(w)_n\in\W$ such that
+	\begin{equation*}
+		\lim_{n\to\infty}\norm{v-w_n}=d
+	\end{equation*}
+	Using the parallelogram rule, we have that
+	\begin{equation*}
+		\norm{w_n-w_k}^2=\norm{(w_n-v)+(v-w_k)}^2=2\norm{v-w_n}^2+2\norm{v-w_k}^2-4\norm{\frac{1}{2}(w_n+w_k)-v}^2
+	\end{equation*}
+	Since $1/2(w_n+w_k)\in\W$ we have by definition of $d$
+	\begin{equation*}
+		\norm{\frac{1}{2}\left( w_n+w_k \right)-v}\ge d
+	\end{equation*}
+	Therefore, we can rewrite
+	\begin{equation*}
+		\norm{w_n-w_k}^2\le2\norm{v-w_n}^2+2\norm{v-w_k}^2-4d^2
+	\end{equation*}
+	Therefore, we have
+	\begin{equation*}
+		\forall\epsilon>0\ \exists N\in\N\st\forall n,k\ge N\ \norm{w_n-w_k}^2\le4(d+\epsilon)^2-4d^2
+	\end{equation*}
+	Hence $(w)_n$ is a Cauchy sequence. Since by definition $\V$ is complete and $\W\subset\V$ is closed, we have that $\W$ is also complete, therefore $(w)_n\to w_0\in\W$ and we have
+	\begin{equation*}
+		\norm{v-w_0}=d
+	\end{equation*}
+	Now suppose that $\exists w_1,w_2\in\W$ such that the previous is true, i.e.
+	\begin{equation*}
+		\norm{v-w_1}=\norm{v-w_2}\le\norm{v-w}\quad\forall w\in\W
+	\end{equation*}
+	Taken $w_3=1/2(w_1+w_2)$ we have
+	\begin{equation*}
+		\norm{v-w_3}^2=\norm{v-w_1}^2-\frac{1}{4}\norm{w_2-w_1}^2
+	\end{equation*}
+	Taken $d=\norm{v-w_1}=\norm{v-w_2}$, $z_1=v-w_3$ and $z_2=1/2(w_1-w_2)$ we get
+	\begin{equation*}
+		\norm{z_1+z_2}^2+\norm{z_1-z_2}^2=2\left( \norm{z_1}^2+\norm{z_2}^2 \right)
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		d^2=\frac{1}{2}\left( \norm{v-w_1}^2+\norm{v-w_2}^2 \right)=\norm{v-w_3}^2+\frac{1}{4}\norm{w_1-w_2}^2
+	\end{equation*}
+	I.e. if $w_1\ne w_2$, $w_3$ is the infimum between $v\in\V$ and $\W$ $\lightning$
+\end{proof}
+\subsection{Projections and Orthogonal Projections}
+\begin{thm}[Projection]
+	Given $\W\subset\V$ closed subspace of a Hilbert space, we have
+	\begin{equation*}
+		v=w+z\quad\forall v\in\V,\ w\in\W,\ z\in\W^\perp
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Given $v\in\V$, due to the previous lemma we have that $\exists!w\in\W$ such that
+	\begin{equation*}
+		d=\norm{v-w}\le\norm{v-w'}\quad\forall w'\in\W
+	\end{equation*}
+	Taken $z=v-w$, and an element $x\in\W$, define the vector $w+tx$ with $t\in\Cf$. Since $\W$ is a subspace $w+tx\in\W$ and $\forall t\in\Cf$ we have
+	\begin{equation*}
+		d^2\le\norm{v-(w+tx)}^2=\norm{v-w}^2-\cc{t}\spr{v-w,x}-t\spr{x}{v-w}+\norm{t}^2\norm{x}^2
+	\end{equation*}
+	Writing $\spr{x}{v-w}=\norm{\spr{x}{v-w}}e^{i\theta}$ and $t=se^{-i\theta}$ with $s\in\R$ we have
+	\begin{equation*}
+		-2s\norm{\spr{v-w}{x}}+s^2\norm{x}^2\ge0\quad\forall s\in\R
+	\end{equation*}
+	Which implies
+	\begin{equation*}
+		\spr{v-w}{x}=0\implies{} z=v-w\in\W^\perp
+	\end{equation*}
+	Therefore there exists a representation $v=w+z$ with $w\in\W,\ z\in\W^\perp$
+	Now, we suppose that $v=w'+z'$, then
+	\begin{equation*}
+		0=(w-w')+(z-z')
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		0=\norm{(w-w')+(z-z')}^2=\norm{w-w'}+\norm{z-z'}^2
+	\end{equation*}
+	Therefore the representation is unique.
+\end{proof}
+\begin{thm}
+	If $\W\subset\V$ with $\V$ a Hilbert space, we have
+	\begin{equation*}
+		\left( \W^\perp \right)^\perp=\cc{\W}
+	\end{equation*}
+	If $\W$ is closed
+	\begin{equation*}
+		\left( \W^\perp \right)^\perp=\W
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken $w\in\W$ we have that $w\perp v$ with $v\in\W^\perp$, therefore $w\in(\W^\perp)^\perp$. Therefore
+	\begin{equation*}
+		\W\subset\left( \W^\perp \right)^\perp
+	\end{equation*}
+	Since the space on the right is closed, we have
+	\begin{equation*}
+		\cc{\W}=\cc{\left( \W^\perp \right)^\perp}=\left( \W^\perp \right)^\perp
+	\end{equation*}
+	Now taken $w\in\left( \W^\perp \right)^\perp$, since $\cc{\W}$ is a closed subspace by definition, we can write
+	\begin{equation*}
+		w=v+z\quad v\in\cc{\W},\ z\in\cc{\W}^\perp=\W^\perp
+	\end{equation*}
+	We have $w\perp z$, and therefore
+	\begin{equation*}
+		\norm{z}^2=\spr{z}{w-v}=0\implies{} w=v\in\cc{\W}
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Orthogonal Projection]
+	Given a closed subspace $\W\subset\V$ we can define an operator $\opr{\pi}_\W:\V\fto\W$ such that
+	\begin{equation}
+		\opr{\pi}_\W v=w\iff w\in\W,\ v-w\in\W^\perp
+		\label{eq:orthprojection}
+	\end{equation}
+	$\opr{\pi}_\W$ is linear and called a \textit{orthogonal projection}
+\end{dfn}
+\begin{thm}
+	Given $\W\subset\V$ a closed subspace of the Hilbert space $\V$, then given an orthogonal projection $\opr{\pi}_\W:\V\fto\W$ we have, $\forall v,z\in\V$ and another closed subspace $\mathcal{Z}\subset\V$
+	\begin{enumerate}
+	\item $\opr{\pi}_\W^2=\opr{\pi}_\W$
+	\item $\spr{\opr{\pi}_\W v}{z}=\spr{v}{\opr{\pi}_\W z}\ge0$
+	\item If $\mathcal{Z}\subseteq\W^\perp\quad\opr{\pi}_\W\circ\opr{\pi}_{\mathcal{Z}}=\opr{\pi}_{\mathcal{Z}}\circ\opr{\pi}_\W=0$
+	\item If $\mathcal{Z}\subset\W\quad\opr{\pi}_\W\circ\opr{\pi}_{\mathcal{Z}}=\opr{\pi}_{\mathcal{Z}}\circ\opr{\pi}_\W=\opr{\pi}_\W$
+	\end{enumerate}
+\end{thm}
+\begin{dfn}[Direct Sum]
+	An euclidean space $\V$ is called the \textit{direct sum} of closed subspaces $\V_i\subset\V$ and it's indicated as follows
+	\begin{equation}
+		\V=\V_1\oplus\V_2\oplus\cdots=\bigoplus_{k=1}^\infty\V_k
+		\label{eq:directsum}
+	\end{equation}
+	If
+	\begin{enumerate}
+	\item The spaces $\V_k$ are orthogonal in couples
+	\item $\forall v\in\V\ v=\sum_{k=1}^\infty v_k$ with $v_k\in\V_k$
+	\end{enumerate}
+\end{dfn}
+\begin{cor}
+	Given a Hilbert space $\V$ and a closed subspace $\W$, then
+	\begin{equation}
+		\V=\W\oplus\W^\perp
+		\label{eq:closedirectsum}
+	\end{equation}
+\end{cor}
+\subsection{Orthogonal Systems and Bases}
+\begin{dfn}[Orthogonal System]
+	A set of vectors $X\subset\V\quad X\ne\{\}$ is said to be an \textit{orthogonal system} if $\forall u,v\in X,\ u\ne v\quad u\perp v$.\\
+\end{dfn}
+\begin{dfn}[Orthonormal System]
+	Given an orthogonal system $X\subset\V$ such that $\forall u\in X$ we have $\norm{u}=1$, the system $X$ is called an \textit{orthonormal system}
+\end{dfn}
+\begin{thm}
+	Given an orthogonal system $X\subset\V$ with $(\V,\spr{\cdot}{\cdot})$ an euclidean space, then we have that $X$ is a system of linearly independent vectors
+\end{thm}
+\begin{dfn}[Basis]
+	Given an orthogonal and complete set of vectors $(v)_\alpha$ in an euclidean space $\V$ it's said to be an \textit{orthogonal basis} of $\V$. If it's an orthonormal and complete set of vectors it's said to be an \textit{orthonormal basis} of $\V$
+\end{dfn}
+\begin{lem}
+	Given an orthogonal system $(v)_{k=1}^n\in\V$ and let $u\in\V$ an arbitrary vector. Then given $z\in\V$ as follows
+	\begin{equation*}
+		z:=u-\sum_{k=1}^n\frac{\spr{u}{v_k}}{\norm{v_k}^2}v_k
+	\end{equation*}
+	We have that $z\perp v_i\ \forall 1\le i\le n$ and therefore $z\perp\span\left\{ v_1,\cdots,v_n \right\}$
+\end{lem}
+\begin{proof}
+	$\forall i=1,\cdots,n$ it's obvious that $\spr{z}{v_i}=0$, therefore
+	\begin{equation*}
+		z\in\left\{ v_1,\cdots,v_n \right\}^\perp
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		z\in\left\{ v_1,\cdots,v_n \right\}^\perp=\cc{\span\left\{v_1,\cdots,v_n\right\}}^\perp=\span\left\{ v_1,\cdots,v_n \right\}^\perp
+	\end{equation*}
+\end{proof}
+\begin{thm}[Gram-Schmidt Orthonormalization]
+	Given $\V$ an euclidean space and $(v)_{n\in\N}\in\V$ a set of linearly independent vectors. Then $\exists(u)_{n\in\N}\in\V$ orthonormal system such that
+	\begin{enumerate}
+	\item $u_n$ is a linear combination of $v_i\ \forall0\le i\le n$, i.e.
+		\begin{equation*}
+			u_n=\sum_{k=1}^n a_{nk}v_k\quad a_{nn}\ne0
+		\end{equation*}
+	\item $v_n$ can be written as follows
+		\begin{equation*}
+			v_n=\sum_{k=1}^nb_{nk}u_k\quad b_{nn}\ne0
+		\end{equation*}
+	\end{enumerate}
+	Therefore, $\forall n\in\N$ we have that
+	\begin{equation*}
+		\span\left\{ v_1,\cdots,v_n \right\}=\span\left\{ u_1,\cdots,u_n \right\}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Defining
+	\begin{equation*}
+		w_n=v_n-\sum_{k=1}^{n-1}\frac{\spr{v_n}{v_k}}{\norm{w_k}^2}w_k\quad u_n=\frac{w_n}{\norm{w_n}}
+	\end{equation*}
+	We can say immediately that $\forall n\ge1$ $w_n\in\left\{ w_1,\cdots,w_{n-1} \right\}^\perp$. By induction we can say that it holds $\forall(w)_{n\in\N}$, therefore $(w)_n$ is an orthogonal system and $(u)_{n\in\N}$ is an orthonormal system\\
+	We can also say that
+	\begin{equation*}
+		v_n=w_n+\sum_{j=1}^{k-1}\beta_{nj}w_{j}
+	\end{equation*}
+	I.e. $\forall n\ge1$ $w_n$ is a linear combination of $\left\{ v_1,\cdots,v_n \right\}$, therefore, by definition
+	\begin{equation*}
+		\span\left\{ v_1,\cdots,v_n \right\}=\span\left\{ w_1,\cdots,w_n \right\}=\span\left\{ u_1,\cdots,u_n \right\}
+	\end{equation*}
+\end{proof}
+\begin{eg}
+	1) Legendre Polynomials\\
+	Using the Gram-Schmidt orthonormalization procedure, we can find an orthonormal system $\left\{ p_0,\cdots,p_n \right\}\subset C_2[-1,1]$ starting from the following system
+	\begin{equation*}
+		(v)_n:=\left\{ 1,x,x^2,x^3,x^4,\cdots,x^n \right\}
+	\end{equation*}
+	The final result will be called the \textit{Legendre Polynomials}
+	We begin by taking the canonical scalar product in $C_2[-1,1]$ as follows
+	\begin{equation*}
+		\spr{f}{g}=\int_{-1}^{1}f(x)g(x)\diff x
+	\end{equation*}
+	And using that
+	\begin{equation*}
+		\int_{-1}^{1}x^n\diff x=\begin{dcases}\frac{2}{n+1}&n=2k\in\N\\0&n=2k\in\N\end{dcases}
+	\end{equation*}
+	Therefore, we have that
+	\begin{equation*}
+		\begin{aligned}
+			w_0&=1\quad\norm{w_0}^2=\int_{-1}^{1}\diff x=2\\
+			w_1&=x-\frac{1}{2}\int_{-1}^{1}x\diff x=x\quad\norm{w_1}^2=\frac{-1}{1}x^2\diff x=\frac{2}{3}\\
+			w_2&=x^2-\frac{1}{3}\quad\norm{w_2}^2=\int_{-1}^{1}\left( x^2\frac{1}{3} \right)^2\diff x=\frac{8}{45}\\
+			\vdots&
+		\end{aligned}
+	\end{equation*}
+	Normalizing, we find
+	\begin{equation*}
+		\begin{aligned}
+			p_0&=\frac{1}{\sqrt{2}}\\
+			p_1(x)&=\sqrt{\frac{3}{2}}x\\
+			p_2(x)&=\sqrt{\frac{45}{8}}\left( x^2-\frac{1}{3} \right)=\frac{1}{2}\sqrt{\frac{5}{2}}\left( 3x^2-1 \right)\\
+			\vdots&
+		\end{aligned}
+	\end{equation*}
+	And so on. The set $(p)_n$ is called the set of \textit{Legendre polynomials}
+	2) Hermite Polynomials\\
+	Using the same procedure, we can find the \textit{Hermite polynomials} $H_n(x)$ in the space $C_2(\R,e^{-x^2}\diff x)$. The first $5$ are the following
+	\begin{equation*}
+		\begin{aligned}
+			H_1&=1\\
+			H_2(x)&=x\\
+			H_3(x)&=x^2-\frac{1}{2}\\
+			H_4(x)&=x^3-\frac{3}{2}x\\
+			H_5(x)&=x^4-3x^2+\frac{3}{4}
+		\end{aligned}
+	\end{equation*}
+\end{eg}
+\begin{thm}[Existence of an Orthonormal Basis]
+	Given a separable or complete euclidean space $\V$, there always exists an orthonormal basis
+\end{thm}
+\begin{proof}
+	Taken $\V$ a separable euclidean space and $(v)_{n\in\N}$ a dense subset of $\V$.\\
+	Removing the linearly independent elements of this subset, we can call the new linearly independent set $(w)_{n\in\N}$. We have obviously
+	\begin{equation*}
+		\begin{aligned}
+			\span\left\{ (w)_{n=1}^\infty \right\}&=\span\left\{ (v)_{n=1}^\infty \right\}\\
+			\cc{\span\left\{ (w)_{n=1}^\infty \right\}}&=\cc{\span\left\{ (v)_{n=1}^\infty \right\}}=\V
+		\end{aligned}
+	\end{equation*}
+	Orthonormalizing the system $(w)_{n\in\N}$ with the Gram-Schmidt procedure I obtain then a new set $(u)_{n\in\N}$ such that
+	\begin{equation*}
+		\cc{\span\left\{ (u)_{n\in\N} \right\}}=\cc{\span\left\{ (w)_{n\in\N} \right\}}=\V
+	\end{equation*}
+	$(u)_{n\in\N}$ is complete and therefore a basis.
+\end{proof}
+\begin{rmk}
+	If $\V$ is a complete euclidean space but not separable, we can find thanks to Zorn's lemma a maximal orthonormal basis, but
+	\begin{enumerate}
+	\item There isn't a standard procedure for finding this basis
+	\item Taken the basis $(u)_{\alpha\in I}$ it can't be numerable. If it was then $\V=\cc{\span\left\{ (u)_{\alpha} \right\}}$. Taken $X=\span_{\Q}\left\{ (u)_k \right\}$ as the set of finite linear combinations with rational coefficients, we have that $\cc{X}=\span\left\{ (u)_k \right\}$ and therefore $\cc{X}=\V$ contradicting the fact that $\V$ is not separable
+	\end{enumerate}
+\end{rmk}
+%%Bessel Inequality to Fourier Calculus Chapter%%
+%\end{dfn}
+\end{document}
