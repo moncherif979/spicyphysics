@@ -1,0 +1,271 @@
+/* ================================
+   Clanker — diesel/steampunk theme
+   ================================
+   Goals:
+   - Gunmetal base, brass accents
+   - Riveted panel motif
+   - Works with existing markup (progressive enhancement)
+   - Accessible contrast + focus states
+   -------------------------------- */
+
+/* ---- Tokens (dark mode first) ---- */
+:root {
+  --bg:        #0d1116; /* gunmetal */
+  --bg-2:      #121826;
+  --panel:     #161b26;
+  --edge:      #283244; /* panel edge lines */
+  --text:      #e7ecf2;
+  --muted:     #9aa6b2;
+  --accent:    #caa76a; /* brass */
+  --accent-2:  #8f6c2d; /* darker brass edge */
+  --rivet:     #3a4558; /* rivet heads */
+  --link:      #d7b377;
+  --ok:        #68c28b;
+  --warn:      #f6c65b;
+  --bad:       #ef6666;
+  --shadow:    0 12px 28px rgba(0,0,0,.35);
+}
+
+/* Prefer light scheme if user asks for it */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:       #f6f8fb;
+    --bg-2:     #e9eef6;
+    --panel:    #ffffff;
+    --edge:     #d3dbe9;
+    --text:     #0f1320;
+    --muted:    #4a5568;
+    --accent:   #7f622c;
+    --accent-2: #b28a3a;
+    --rivet:    #c6cfdf;
+    --link:     #7f622c;
+    --shadow:   0 16px 26px rgba(0,0,0,.08);
+  }
+}
+
+/* ---- Base ---- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body.clanker, body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 1200px at 0% 0%, rgba(255,255,255,.02), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  font: 16px/1.6 system-ui, Segoe UI, Roboto, Inter, -apple-system, sans-serif;
+  letter-spacing: .1px;
+}
+
+/* Container that catches most layouts without changing HTML */
+main, .content, .container, #content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5, h6 {
+  margin: 14px 0 8px;
+  line-height: 1.25;
+  letter-spacing: .3px;
+  font-weight: 700;
+  color: var(--text);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+}
+h1 { font-size: clamp(28px, 3.5vw, 38px); }
+h2 { font-size: clamp(22px, 2.6vw, 28px); }
+h3 { font-size: clamp(18px, 2.1vw, 22px); }
+
+p { margin: 10px 0; color: var(--text); }
+small, .muted { color: var(--muted); }
+
+/* ---- Links ---- */
+a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px dashed color-mix(in srgb, var(--link) 60%, transparent);
+  transition: color .15s ease, border-color .15s ease, text-shadow .15s ease;
+}
+a:hover, a:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 6px color-mix(in srgb, var(--accent) 35%, transparent);
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+/* Make obvious buttons when links already look like buttons */
+a.button, .btn, button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 80%, #fff 12%), color-mix(in srgb, var(--accent) 85%, #000 18%));
+  border: 1px solid var(--accent-2);
+  color: #111;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.25);
+  cursor: pointer;
+}
+a.button:hover, .btn:hover, button:hover {
+  filter: brightness(1.06);
+}
+a.button:active, .btn:active, button:active {
+  transform: translateY(1px);
+}
+
+/* ---- Panels / Cards (optional classes you can add) ---- */
+.panel, .card {
+  position: relative;
+  background: linear-gradient(180deg, var(--panel), color-mix(in srgb, var(--panel) 90%, #000 10%));
+  border: 1px solid var(--edge);
+  border-radius: 14px;
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.04), inset 0 -1px 0 rgba(0,0,0,.2);
+  padding: 18px 18px 16px;
+}
+
+/* Subtle rivets around panel edges */
+.panel::after, .card::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 10px;
+  pointer-events: none;
+  /* four corner screws + dotted edge hints */
+  background:
+    radial-gradient(circle 3px, var(--rivet) 60%, transparent 62%) top 12px left 12px / 10px 10px no-repeat,
+    radial-gradient(circle 3px, var(--rivet) 60%, transparent 62%) top 12px right 12px / 10px 10px no-repeat,
+    radial-gradient(circle 3px, var(--rivet) 60%, transparent 62%) bottom 12px left 12px / 10px 10px no-repeat,
+    radial-gradient(circle 3px, var(--rivet) 60%, transparent 62%) bottom 12px right 12px / 10px 10px no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,.05) 18px 19px) top / 100% 1px no-repeat,
+    repeating-linear-gradient(0deg,  transparent 0 18px, rgba(255,255,255,.05) 18px 19px) right / 1px 100% no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(0,0,0,.25)     18px 19px) bottom / 100% 1px no-repeat,
+    repeating-linear-gradient(0deg,  transparent 0 18px, rgba(0,0,0,.25)     18px 19px) left / 1px 100% no-repeat;
+}
+
+/* Cards grid (applies automatically if you wrap links in .grid) */
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.card {
+  padding: 14px 16px;
+}
+.card > h3 { margin: 6px 0 4px; font-size: 18px; }
+.card > p { margin: 0; color: var(--muted); }
+
+/* ---- Tables ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+thead th {
+  text-align: left;
+  font-weight: 700;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--panel) 80%, #fff 6%), var(--panel));
+  border-bottom: 1px solid var(--edge);
+  padding: 10px 12px;
+}
+tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--edge) 85%, transparent);
+}
+tbody tr:hover { background: color-mix(in srgb, var(--panel) 85%, #fff 5%); }
+
+/* ---- Code / Pre ---- */
+code, pre, .code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+pre {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #0b0f16;
+  color: #e3e8ef;
+  border: 1px solid #273041;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+  overflow: auto;
+}
+
+/* ---- Lists ---- */
+ul, ol { padding-left: 20px; }
+li + li { margin-top: 4px; }
+
+/* ---- Forms (basic) ---- */
+input, select, textarea {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--edge);
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  outline-offset: 2px;
+}
+
+/* ---- Helpers ---- */
+.divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--edge), transparent);
+  margin: 18px 0;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  color: #111;
+  background: var(--accent);
+  border: 1px solid var(--accent-2);
+}
+
+/* ---- Smart PDFs: highlight without markup changes ---- */
+a[href$=".pdf"] {
+  padding-right: 8px;
+  position: relative;
+}
+a[href$=".pdf"]::after {
+  content: "PDF";
+  position: relative;
+  top: -1px;
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  color: #111;
+  background: var(--accent);
+  border: 1px solid var(--accent-2);
+  border-radius: 6px;
+  padding: 1px 6px 2px;
+}
+
+/* ---- Navigation/Footer (if present) ---- */
+header, nav, footer {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--panel) 80%, #fff 6%), var(--panel));
+  border-top: 1px solid var(--edge);
+  border-bottom: 1px solid var(--edge);
+  box-shadow: var(--shadow);
+}
+header, nav { padding: 12px 18px; }
+footer { padding: 18px; color: var(--muted); }
+
+/* ---- Responsive niceties ---- */
+img, iframe, embed, object { max-width: 100%; height: auto; }
+
+/* ---- Reduce motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
