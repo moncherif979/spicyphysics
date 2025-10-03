@@ -2,48 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SpicyPhysics — File Explorer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpicyPhysics — Notes & PDFs</title>
   <style>
-    body { font-family: monospace; background: #fdf6e3; color: #073642; margin: 2em; }
-    h1 { text-align: center; }
-    ul { list-style: none; padding-left: 1em; }
-    li { margin: 0.3em 0; }
-    a { text-decoration: none; color: #268bd2; }
-    a:hover { text-decoration: underline; }
+    body {
+      font-family: sans-serif;
+      margin: 2em;
+      max-width: 800px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .pdf-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .pdf-list li {
+      margin: 1em 0;
+    }
+    .pdf-list a {
+      font-size: 1.2em;
+      text-decoration: none;
+      color: #2a5d84;
+    }
+    .pdf-list a:hover {
+      text-decoration: underline;
+    }
+    .preview {
+      margin-top: 0.5em;
+      border: 1px solid #ccc;
+      height: 300px;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-  <h1>🌶️ SpicyPhysics Repo Browser</h1>
-  <p><a href="https://github.com/moncherif979/spicyphysics">Back to GitHub</a></p>
-  <div id="file-list">Loading files...</div>
-
-  <script>
-    async function fetchContents(path = '') {
-      const url = `https://api.github.com/repos/moncherif979/spicyphysics/contents/${path}`;
-      const res = await fetch(url);
-      return res.json();
-    }
-
-    async function render(path = '') {
-      const files = await fetchContents(path);
-      let html = '<ul>';
-      for (const file of files) {
-        if (file.type === 'dir') {
-          html += `<li>📂 <a href="?path=${file.path}">${file.name}/</a></li>`;
-        } else {
-          html += `<li>📄 <a href="${file.html_url}" target="_blank">${file.name}</a></li>`;
-        }
-      }
-      html += '</ul>';
-      document.getElementById('file-list').innerHTML = html;
-    }
-
-    // Handle navigation
-    const params = new URLSearchParams(window.location.search);
-    const path = params.get('path') || '';
-    render(path);
-  </script>
+  <h1>SpicyPhysics — Notes</h1>
+  <p>Here are the physics notes. Click name to view or download. Scroll down to see preview.</p>
+  <ul class="pdf-list">
+    <li>
+      <a href="admech.pdf" target="_blank">admech.pdf</a>
+      <div class="preview">
+        <iframe src="admech.pdf#view=FitH" width="100%" height="100%"></iframe>
+      </div>
+    </li>
+    <li>
+      <a href="electromagnetism.pdf" target="_blank">electromagnetism.pdf</a>
+      <div class="preview">
+        <iframe src="electromagnetism.pdf#view=FitH" width="100%" height="100%"></iframe>
+      </div>
+    </li>
+    <li>
+      <a href="thermodynamics.pdf" target="_blank">thermodynamics.pdf</a>
+      <div class="preview">
+        <iframe src="thermodynamics.pdf#view=FitH" width="100%" height="100%"></iframe>
+      </div>
+    </li>
+    <!-- Add more entries similarly -->
+  </ul>
 </body>
 </html>
-
