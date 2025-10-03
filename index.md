@@ -5,7 +5,7 @@ I personally curated all the notes here during my Bachelor's degree in physics, 
 Soon I will update the notes (and add new ones!) since I'm furthering my studies in physics with a Master's degree in Atmospheric Physics, Meteorology and Climatology, therefore it *will* become a fluid-dynamics centered repository. 
 I'll do my best, if you find errors or have any inquiries hmu at [chemistryisforlosers@gmail.com](mailto:chemistryisforlosers@gmail.com)
 
-## [CHECK THE NOTES HERE](https://moncherif979.github.io/spicyphysics/docs/previews.html)
+## [CHECK THE NOTES HERE](https://moncherif979.github.io/spicyphysics/previews.html)
 
 ## COMING SOON ##
 Updating maths notes in order to include:
